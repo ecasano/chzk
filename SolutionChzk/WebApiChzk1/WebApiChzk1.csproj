@@ -231,7 +231,7 @@
       <DependentUpon>ModelChzk.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Transfer\countrydt.cs" />
+    <Compile Include="Transfer\Countrydt.cs" />
     <Compile Include="Transfer\Storedt.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -305,7 +305,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Transfers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

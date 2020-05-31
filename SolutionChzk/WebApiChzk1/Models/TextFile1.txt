@@ -4,7 +4,7 @@
 	Controlador Ok
 2. Listar tipos de  comprobantes de pago
 3. Listar modos de envío
-4. Listar países *
+4. Listar países
 5. Listar monedas
 6. Listar tamaños del pedido
 7. Listar tipos de documento del cliente

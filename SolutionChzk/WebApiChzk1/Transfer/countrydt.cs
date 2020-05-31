@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebApiChzk1.Transfer
 {
-    public class countrydt
+    public class Countrydt
     {
         public string id { get; set; }
 
