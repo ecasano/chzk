@@ -8,8 +8,8 @@ namespace WebApiChzk1.Models
     public partial class Country
     {
         chzkEntities db = new chzkEntities();
+        Country country = db.Country
 
-        
         //  alumno alumno = db.alumnos.Find(this.id);
         //  alumno.edad += 1;
         //  db.Entry(alumno).State = EntityState.Modified;
