@@ -225,6 +225,7 @@
     <Compile Include="Models\Store.cs">
       <DependentUpon>ModelChzk.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StoreSOA.cs" />
     <Compile Include="Models\TimeZone.cs">
       <DependentUpon>ModelChzk.tt</DependentUpon>
     </Compile>
