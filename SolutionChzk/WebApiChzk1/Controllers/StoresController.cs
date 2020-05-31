@@ -25,6 +25,14 @@ namespace WebApiChzk1.Controllers
             return Store.Tiendas();
         }
 
+        // GET: api/TiendasPorPais
+        [HttpGet]
+        [Route("api/tiendasXpais")]
+        public IEnumerable<Storedt> GetTiendasPorPais(string pais)
+        {
+            return Store.TiendasPorPais(pais);
+        }
+
         // GET: api/Stores
         public IQueryable<Store> GetStore()
         {
