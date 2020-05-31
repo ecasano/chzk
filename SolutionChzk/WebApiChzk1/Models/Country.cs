@@ -12,6 +12,7 @@ namespace WebApiChzk1.Models
     using System;
     using System.Collections.Generic;
     
+    //Paises: perú, argentina, mexino
     public partial class Country
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
