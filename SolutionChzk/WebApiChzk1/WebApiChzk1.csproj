@@ -173,6 +173,7 @@
     <Compile Include="Models\Country.cs">
       <DependentUpon>ModelChzk.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CountrySOA.cs" />
     <Compile Include="Models\Currency.cs">
       <DependentUpon>ModelChzk.tt</DependentUpon>
     </Compile>
