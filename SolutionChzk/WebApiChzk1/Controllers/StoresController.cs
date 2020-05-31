@@ -9,12 +9,21 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebApiChzk1.Models;
+using WebApiChzk1.Transfer;
 
 namespace WebApiChzk1.Controllers
 {
     public class StoresController : ApiController
     {
         private chzkEntities db = new chzkEntities();
+
+        // GET: api/Tiendas
+        [HttpGet]
+        [Route("api/tiendas")]
+        public IEnumerable<Storedt> GetTiendas()
+        {
+            return Store.Tiendas();
+        }
 
         // GET: api/Stores
         public IQueryable<Store> GetStore()
