@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="chzkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="chzkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AddressClient">
           <Key>
             <PropertyRef Name="addressClientId" />
@@ -409,162 +409,10 @@
             <End Role="Store" EntitySet="Store" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="chzkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AddressClient">
-          <Key>
-            <PropertyRef Name="addressClientId" />
-          </Key>
-          <Property Name="addressClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="deliveryTrackCode" Type="Int32" Nullable="false" />
-          <Property Name="district" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
-          <Property Name="address" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="reference" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="country" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="latitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="longitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="timeZone" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Country1" Relationship="Self.FK__AddressCl__count__6A30C649" FromRole="AddressClient" ToRole="Country" />
-          <NavigationProperty Name="Delivery" Relationship="Self.FK__AddressCl__deliv__693CA210" FromRole="AddressClient" ToRole="Delivery" />
-          <NavigationProperty Name="TimeZone1" Relationship="Self.FK__AddressCl__timeZ__6D0D32F4" FromRole="AddressClient" ToRole="TimeZone" />
-        </EntityType>
-        <EntityType Name="Country">
-          <Key>
-            <PropertyRef Name="country1" />
-          </Key>
-          <Property Name="country1" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="timezone" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AddressClient" Relationship="Self.FK__AddressCl__count__6A30C649" FromRole="Country" ToRole="AddressClient" />
-          <NavigationProperty Name="Store" Relationship="Self.FK__Store__country__5AEE82B9" FromRole="Country" ToRole="Store" />
-        </EntityType>
-        <EntityType Name="Currency">
-          <Key>
-            <PropertyRef Name="currency1" />
-          </Key>
-          <Property Name="currency1" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ListItemSold" Relationship="Self.FK__ListItemS__curre__656C112C" FromRole="Currency" ToRole="ListItemSold" />
-        </EntityType>
-        <EntityType Name="Delivery">
-          <Key>
-            <PropertyRef Name="deliveryTrackCode" />
-          </Key>
-          <Property Name="deliveryTrackCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="storeId" Type="Int32" Nullable="false" />
-          <Property Name="proofPayment" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="deliveryCost" Type="Decimal" Precision="12" Scale="2" />
-          <Property Name="mode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="paymentMethod" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="documentType" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="documentNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="contactName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="companyname" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="postalcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AddressClient" Relationship="Self.FK__AddressCl__deliv__693CA210" FromRole="Delivery" ToRole="AddressClient" />
-          <NavigationProperty Name="DocumentType1" Relationship="Self.FK__Delivery__docume__619B8048" FromRole="Delivery" ToRole="DocumentType" />
-          <NavigationProperty Name="Mode1" Relationship="Self.FK__Delivery__mode__5FB337D6" FromRole="Delivery" ToRole="Mode" />
-          <NavigationProperty Name="PaymentMethod1" Relationship="Self.FK__Delivery__paymen__60A75C0F" FromRole="Delivery" ToRole="PaymentMethod" />
-          <NavigationProperty Name="ProofPayment1" Relationship="Self.FK__Delivery__proofP__5EBF139D" FromRole="Delivery" ToRole="ProofPayment" />
-          <NavigationProperty Name="DeliveryService" Relationship="Self.FK__DeliveryS__deliv__6FE99F9F" FromRole="Delivery" ToRole="DeliveryService" />
-          <NavigationProperty Name="ListItemSold" Relationship="Self.FK__ListItemS__deliv__6477ECF3" FromRole="Delivery" ToRole="ListItemSold" />
-        </EntityType>
-        <EntityType Name="DeliveryService">
-          <Key>
-            <PropertyRef Name="deliveryServiceId" />
-          </Key>
-          <Property Name="deliveryServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="deliveryTrackCode" Type="Int32" Nullable="false" />
-          <Property Name="storeId" Type="Int32" Nullable="false" />
-          <Property Name="latitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="longitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="lastupdate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="chazkiName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="message" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Delivery" Relationship="Self.FK__DeliveryS__deliv__6FE99F9F" FromRole="DeliveryService" ToRole="Delivery" />
-          <NavigationProperty Name="DeliveryServiceStatus" Relationship="Self.FK__DeliveryS__deliv__74AE54BC" FromRole="DeliveryService" ToRole="DeliveryServiceStatus" />
-        </EntityType>
-        <EntityType Name="DeliveryServiceStatus">
-          <Key>
-            <PropertyRef Name="deliveryServiceStatusId" />
-          </Key>
-          <Property Name="deliveryServiceStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="deliveryServiceId" Type="Int32" Nullable="false" />
-          <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="dateStatus" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="reason" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DeliveryService" Relationship="Self.FK__DeliveryS__deliv__74AE54BC" FromRole="DeliveryServiceStatus" ToRole="DeliveryService" />
-          <NavigationProperty Name="DeliveryStatus" Relationship="Self.FK__DeliveryS__statu__75A278F5" FromRole="DeliveryServiceStatus" ToRole="DeliveryStatus" />
-        </EntityType>
-        <EntityType Name="DeliverySize">
-          <Key>
-            <PropertyRef Name="size" />
-          </Key>
-          <Property Name="size" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ListItemSold" Relationship="Self.FK__ListItemSo__size__66603565" FromRole="DeliverySize" ToRole="ListItemSold" />
-        </EntityType>
-        <EntityType Name="DeliveryStatus">
-          <Key>
-            <PropertyRef Name="status" />
-          </Key>
-          <Property Name="status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DeliveryServiceStatus" Relationship="Self.FK__DeliveryS__statu__75A278F5" FromRole="DeliveryStatus" ToRole="DeliveryServiceStatus" />
-        </EntityType>
-        <EntityType Name="DocumentType">
-          <Key>
-            <PropertyRef Name="documentType1" />
-          </Key>
-          <Property Name="documentType1" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Delivery" Relationship="Self.FK__Delivery__docume__619B8048" FromRole="DocumentType" ToRole="Delivery" />
-        </EntityType>
-        <EntityType Name="ListItemSold">
-          <Key>
-            <PropertyRef Name="itemSoldId" />
-          </Key>
-          <Property Name="itemSoldId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="deliveryTrackCode" Type="Int32" Nullable="false" />
-          <Property Name="product" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="currency" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="price" Type="Decimal" Precision="12" Scale="2" />
-          <Property Name="quantity" Type="Int32" />
-          <Property Name="size" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Currency1" Relationship="Self.FK__ListItemS__curre__656C112C" FromRole="ListItemSold" ToRole="Currency" />
-          <NavigationProperty Name="Delivery" Relationship="Self.FK__ListItemS__deliv__6477ECF3" FromRole="ListItemSold" ToRole="Delivery" />
-          <NavigationProperty Name="DeliverySize" Relationship="Self.FK__ListItemSo__size__66603565" FromRole="ListItemSold" ToRole="DeliverySize" />
-        </EntityType>
-        <EntityType Name="Mode">
-          <Key>
-            <PropertyRef Name="mode1" />
-          </Key>
-          <Property Name="mode1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Delivery" Relationship="Self.FK__Delivery__mode__5FB337D6" FromRole="Mode" ToRole="Delivery" />
-        </EntityType>
-        <EntityType Name="PaymentMethod">
-          <Key>
-            <PropertyRef Name="paymentMethod1" />
-          </Key>
-          <Property Name="paymentMethod1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Delivery" Relationship="Self.FK__Delivery__paymen__60A75C0F" FromRole="PaymentMethod" ToRole="Delivery" />
-        </EntityType>
-        <EntityType Name="ProofPayment">
-          <Key>
-            <PropertyRef Name="proofPayment1" />
-          </Key>
-          <Property Name="proofPayment1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Delivery" Relationship="Self.FK__Delivery__proofP__5EBF139D" FromRole="ProofPayment" ToRole="Delivery" />
-        </EntityType>
         <EntityType Name="Store">
           <Key>
             <PropertyRef Name="storeId" />
@@ -577,23 +425,251 @@
           <Property Name="latitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="longitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="timeZone" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Country1" Relationship="Self.FK__Store__country__5AEE82B9" FromRole="Store" ToRole="Country" />
-          <NavigationProperty Name="TimeZone1" Relationship="Self.FK__Store__timeZone__5BE2A6F2" FromRole="Store" ToRole="TimeZone" />
+          <NavigationProperty Name="Country1" Relationship="chzkModel.FK__Store__country__5AEE82B9" FromRole="Store" ToRole="Country" />
+          <NavigationProperty Name="TimeZone1" Relationship="chzkModel.FK__Store__timeZone__5BE2A6F2" FromRole="Store" ToRole="TimeZone" />
+        </EntityType>
+        <EntityContainer Name="chzkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Store" EntityType="Self.Store" />
+          <EntitySet Name="AddressClient" EntityType="chzkModel.AddressClient" />
+          <EntitySet Name="Country" EntityType="chzkModel.Country" />
+          <EntitySet Name="Currency" EntityType="chzkModel.Currency" />
+          <EntitySet Name="Delivery" EntityType="chzkModel.Delivery" />
+          <EntitySet Name="DeliveryService" EntityType="chzkModel.DeliveryService" />
+          <EntitySet Name="DeliveryServiceStatus" EntityType="chzkModel.DeliveryServiceStatus" />
+          <EntitySet Name="DeliverySize" EntityType="chzkModel.DeliverySize" />
+          <EntitySet Name="DeliveryStatus" EntityType="chzkModel.DeliveryStatus" />
+          <EntitySet Name="DocumentType" EntityType="chzkModel.DocumentType" />
+          <EntitySet Name="ListItemSold" EntityType="chzkModel.ListItemSold" />
+          <EntitySet Name="Mode" EntityType="chzkModel.Mode" />
+          <EntitySet Name="PaymentMethod" EntityType="chzkModel.PaymentMethod" />
+          <EntitySet Name="ProofPayment" EntityType="chzkModel.ProofPayment" />
+          <EntitySet Name="TimeZone" EntityType="chzkModel.TimeZone" />
+          <AssociationSet Name="FK__AddressCl__count__6A30C649" Association="chzkModel.FK__AddressCl__count__6A30C649">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="AddressClient" EntitySet="AddressClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddressCl__deliv__693CA210" Association="chzkModel.FK__AddressCl__deliv__693CA210">
+            <End Role="Delivery" EntitySet="Delivery" />
+            <End Role="AddressClient" EntitySet="AddressClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddressCl__timeZ__6D0D32F4" Association="chzkModel.FK__AddressCl__timeZ__6D0D32F4">
+            <End Role="TimeZone" EntitySet="TimeZone" />
+            <End Role="AddressClient" EntitySet="AddressClient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Store__country__5AEE82B9" Association="chzkModel.FK__Store__country__5AEE82B9">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Store" EntitySet="Store" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListItemS__curre__656C112C" Association="chzkModel.FK__ListItemS__curre__656C112C">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="ListItemSold" EntitySet="ListItemSold" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Delivery__docume__619B8048" Association="chzkModel.FK__Delivery__docume__619B8048">
+            <End Role="DocumentType" EntitySet="DocumentType" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Delivery__mode__5FB337D6" Association="chzkModel.FK__Delivery__mode__5FB337D6">
+            <End Role="Mode" EntitySet="Mode" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Delivery__paymen__60A75C0F" Association="chzkModel.FK__Delivery__paymen__60A75C0F">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Delivery__proofP__5EBF139D" Association="chzkModel.FK__Delivery__proofP__5EBF139D">
+            <End Role="ProofPayment" EntitySet="ProofPayment" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeliveryS__deliv__6FE99F9F" Association="chzkModel.FK__DeliveryS__deliv__6FE99F9F">
+            <End Role="Delivery" EntitySet="Delivery" />
+            <End Role="DeliveryService" EntitySet="DeliveryService" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListItemS__deliv__6477ECF3" Association="chzkModel.FK__ListItemS__deliv__6477ECF3">
+            <End Role="Delivery" EntitySet="Delivery" />
+            <End Role="ListItemSold" EntitySet="ListItemSold" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeliveryS__deliv__74AE54BC" Association="chzkModel.FK__DeliveryS__deliv__74AE54BC">
+            <End Role="DeliveryService" EntitySet="DeliveryService" />
+            <End Role="DeliveryServiceStatus" EntitySet="DeliveryServiceStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DeliveryS__statu__75A278F5" Association="chzkModel.FK__DeliveryS__statu__75A278F5">
+            <End Role="DeliveryStatus" EntitySet="DeliveryStatus" />
+            <End Role="DeliveryServiceStatus" EntitySet="DeliveryServiceStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ListItemSo__size__66603565" Association="chzkModel.FK__ListItemSo__size__66603565">
+            <End Role="DeliverySize" EntitySet="DeliverySize" />
+            <End Role="ListItemSold" EntitySet="ListItemSold" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Store__timeZone__5BE2A6F2" Association="chzkModel.FK__Store__timeZone__5BE2A6F2">
+            <End Role="TimeZone" EntitySet="TimeZone" />
+            <End Role="Store" EntitySet="Store" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AddressClient">
+          <Key>
+            <PropertyRef Name="addressClientId" />
+          </Key>
+          <Property Name="addressClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="deliveryTrackCode" Type="Int32" Nullable="false" />
+          <Property Name="district" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="reference" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="latitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="longitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="timeZone" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Country1" Relationship="chzkModel.FK__AddressCl__count__6A30C649" FromRole="AddressClient" ToRole="Country" />
+          <NavigationProperty Name="Delivery" Relationship="chzkModel.FK__AddressCl__deliv__693CA210" FromRole="AddressClient" ToRole="Delivery" />
+          <NavigationProperty Name="TimeZone1" Relationship="chzkModel.FK__AddressCl__timeZ__6D0D32F4" FromRole="AddressClient" ToRole="TimeZone" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="country1" />
+          </Key>
+          <Property Name="country1" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="timezone" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AddressClient" Relationship="chzkModel.FK__AddressCl__count__6A30C649" FromRole="Country" ToRole="AddressClient" />
+          <NavigationProperty Name="Store" Relationship="chzkModel.FK__Store__country__5AEE82B9" FromRole="Country" ToRole="Store" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="currency1" />
+          </Key>
+          <Property Name="currency1" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ListItemSold" Relationship="chzkModel.FK__ListItemS__curre__656C112C" FromRole="Currency" ToRole="ListItemSold" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="deliveryTrackCode" />
+          </Key>
+          <Property Name="deliveryTrackCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="storeId" Type="Int32" Nullable="false" />
+          <Property Name="proofPayment" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="deliveryCost" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="mode" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="paymentMethod" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="documentType" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="documentNumber" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="contactName" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="companyname" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="postalcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AddressClient" Relationship="chzkModel.FK__AddressCl__deliv__693CA210" FromRole="Delivery" ToRole="AddressClient" />
+          <NavigationProperty Name="DocumentType1" Relationship="chzkModel.FK__Delivery__docume__619B8048" FromRole="Delivery" ToRole="DocumentType" />
+          <NavigationProperty Name="Mode1" Relationship="chzkModel.FK__Delivery__mode__5FB337D6" FromRole="Delivery" ToRole="Mode" />
+          <NavigationProperty Name="PaymentMethod1" Relationship="chzkModel.FK__Delivery__paymen__60A75C0F" FromRole="Delivery" ToRole="PaymentMethod" />
+          <NavigationProperty Name="ProofPayment1" Relationship="chzkModel.FK__Delivery__proofP__5EBF139D" FromRole="Delivery" ToRole="ProofPayment" />
+          <NavigationProperty Name="DeliveryService" Relationship="chzkModel.FK__DeliveryS__deliv__6FE99F9F" FromRole="Delivery" ToRole="DeliveryService" />
+          <NavigationProperty Name="ListItemSold" Relationship="chzkModel.FK__ListItemS__deliv__6477ECF3" FromRole="Delivery" ToRole="ListItemSold" />
+        </EntityType>
+        <EntityType Name="DeliveryService">
+          <Key>
+            <PropertyRef Name="deliveryServiceId" />
+          </Key>
+          <Property Name="deliveryServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="deliveryTrackCode" Type="Int32" Nullable="false" />
+          <Property Name="storeId" Type="Int32" Nullable="false" />
+          <Property Name="latitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="longitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="lastupdate" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="chazkiName" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="message" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Delivery" Relationship="chzkModel.FK__DeliveryS__deliv__6FE99F9F" FromRole="DeliveryService" ToRole="Delivery" />
+          <NavigationProperty Name="DeliveryServiceStatus" Relationship="chzkModel.FK__DeliveryS__deliv__74AE54BC" FromRole="DeliveryService" ToRole="DeliveryServiceStatus" />
+        </EntityType>
+        <EntityType Name="DeliveryServiceStatus">
+          <Key>
+            <PropertyRef Name="deliveryServiceStatusId" />
+          </Key>
+          <Property Name="deliveryServiceStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="deliveryServiceId" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="dateStatus" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="reason" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DeliveryService" Relationship="chzkModel.FK__DeliveryS__deliv__74AE54BC" FromRole="DeliveryServiceStatus" ToRole="DeliveryService" />
+          <NavigationProperty Name="DeliveryStatus" Relationship="chzkModel.FK__DeliveryS__statu__75A278F5" FromRole="DeliveryServiceStatus" ToRole="DeliveryStatus" />
+        </EntityType>
+        <EntityType Name="DeliverySize">
+          <Key>
+            <PropertyRef Name="size" />
+          </Key>
+          <Property Name="size" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ListItemSold" Relationship="chzkModel.FK__ListItemSo__size__66603565" FromRole="DeliverySize" ToRole="ListItemSold" />
+        </EntityType>
+        <EntityType Name="DeliveryStatus">
+          <Key>
+            <PropertyRef Name="status" />
+          </Key>
+          <Property Name="status" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DeliveryServiceStatus" Relationship="chzkModel.FK__DeliveryS__statu__75A278F5" FromRole="DeliveryStatus" ToRole="DeliveryServiceStatus" />
+        </EntityType>
+        <EntityType Name="DocumentType">
+          <Key>
+            <PropertyRef Name="documentType1" />
+          </Key>
+          <Property Name="documentType1" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Delivery" Relationship="chzkModel.FK__Delivery__docume__619B8048" FromRole="DocumentType" ToRole="Delivery" />
+        </EntityType>
+        <EntityType Name="ListItemSold">
+          <Key>
+            <PropertyRef Name="itemSoldId" />
+          </Key>
+          <Property Name="itemSoldId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="deliveryTrackCode" Type="Int32" Nullable="false" />
+          <Property Name="product" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="currency" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="size" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Currency1" Relationship="chzkModel.FK__ListItemS__curre__656C112C" FromRole="ListItemSold" ToRole="Currency" />
+          <NavigationProperty Name="Delivery" Relationship="chzkModel.FK__ListItemS__deliv__6477ECF3" FromRole="ListItemSold" ToRole="Delivery" />
+          <NavigationProperty Name="DeliverySize" Relationship="chzkModel.FK__ListItemSo__size__66603565" FromRole="ListItemSold" ToRole="DeliverySize" />
+        </EntityType>
+        <EntityType Name="Mode">
+          <Key>
+            <PropertyRef Name="mode1" />
+          </Key>
+          <Property Name="mode1" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Delivery" Relationship="chzkModel.FK__Delivery__mode__5FB337D6" FromRole="Mode" ToRole="Delivery" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="paymentMethod1" />
+          </Key>
+          <Property Name="paymentMethod1" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Delivery" Relationship="chzkModel.FK__Delivery__paymen__60A75C0F" FromRole="PaymentMethod" ToRole="Delivery" />
+        </EntityType>
+        <EntityType Name="ProofPayment">
+          <Key>
+            <PropertyRef Name="proofPayment1" />
+          </Key>
+          <Property Name="proofPayment1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Delivery" Relationship="chzkModel.FK__Delivery__proofP__5EBF139D" FromRole="ProofPayment" ToRole="Delivery" />
         </EntityType>
         <EntityType Name="TimeZone">
           <Key>
             <PropertyRef Name="timeZone1" />
           </Key>
-          <Property Name="timeZone1" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="timeZone1" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
           <Property Name="ciudad" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
           <Property Name="utc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="utcVerano" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AddressClient" Relationship="Self.FK__AddressCl__timeZ__6D0D32F4" FromRole="TimeZone" ToRole="AddressClient" />
-          <NavigationProperty Name="Store" Relationship="Self.FK__Store__timeZone__5BE2A6F2" FromRole="TimeZone" ToRole="Store" />
+          <NavigationProperty Name="AddressClient" Relationship="chzkModel.FK__AddressCl__timeZ__6D0D32F4" FromRole="TimeZone" ToRole="AddressClient" />
+          <NavigationProperty Name="Store" Relationship="chzkModel.FK__Store__timeZone__5BE2A6F2" FromRole="TimeZone" ToRole="Store" />
         </EntityType>
         <Association Name="FK__AddressCl__count__6A30C649">
-          <End Role="Country" Type="Self.Country" Multiplicity="1" />
-          <End Role="AddressClient" Type="Self.AddressClient" Multiplicity="*" />
+          <End Type="chzkModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="chzkModel.AddressClient" Role="AddressClient" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="country1" />
@@ -604,8 +680,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__AddressCl__deliv__693CA210">
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="1" />
-          <End Role="AddressClient" Type="Self.AddressClient" Multiplicity="*" />
+          <End Type="chzkModel.Delivery" Role="Delivery" Multiplicity="1" />
+          <End Type="chzkModel.AddressClient" Role="AddressClient" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Delivery">
               <PropertyRef Name="deliveryTrackCode" />
@@ -616,8 +692,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__AddressCl__timeZ__6D0D32F4">
-          <End Role="TimeZone" Type="Self.TimeZone" Multiplicity="0..1" />
-          <End Role="AddressClient" Type="Self.AddressClient" Multiplicity="*" />
+          <End Type="chzkModel.TimeZone" Role="TimeZone" Multiplicity="0..1" />
+          <End Type="chzkModel.AddressClient" Role="AddressClient" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TimeZone">
               <PropertyRef Name="timeZone1" />
@@ -628,8 +704,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Store__country__5AEE82B9">
-          <End Role="Country" Type="Self.Country" Multiplicity="1" />
-          <End Role="Store" Type="Self.Store" Multiplicity="*" />
+          <End Type="chzkModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="chzkModel.Store" Role="Store" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="country1" />
@@ -640,8 +716,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ListItemS__curre__656C112C">
-          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
-          <End Role="ListItemSold" Type="Self.ListItemSold" Multiplicity="*" />
+          <End Type="chzkModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="chzkModel.ListItemSold" Role="ListItemSold" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Currency">
               <PropertyRef Name="currency1" />
@@ -652,8 +728,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Delivery__docume__619B8048">
-          <End Role="DocumentType" Type="Self.DocumentType" Multiplicity="1" />
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <End Type="chzkModel.DocumentType" Role="DocumentType" Multiplicity="1" />
+          <End Type="chzkModel.Delivery" Role="Delivery" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DocumentType">
               <PropertyRef Name="documentType1" />
@@ -664,8 +740,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Delivery__mode__5FB337D6">
-          <End Role="Mode" Type="Self.Mode" Multiplicity="1" />
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <End Type="chzkModel.Mode" Role="Mode" Multiplicity="1" />
+          <End Type="chzkModel.Delivery" Role="Delivery" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Mode">
               <PropertyRef Name="mode1" />
@@ -676,8 +752,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Delivery__paymen__60A75C0F">
-          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <End Type="chzkModel.PaymentMethod" Role="PaymentMethod" Multiplicity="1" />
+          <End Type="chzkModel.Delivery" Role="Delivery" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PaymentMethod">
               <PropertyRef Name="paymentMethod1" />
@@ -688,8 +764,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Delivery__proofP__5EBF139D">
-          <End Role="ProofPayment" Type="Self.ProofPayment" Multiplicity="0..1" />
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <End Type="chzkModel.ProofPayment" Role="ProofPayment" Multiplicity="0..1" />
+          <End Type="chzkModel.Delivery" Role="Delivery" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ProofPayment">
               <PropertyRef Name="proofPayment1" />
@@ -700,8 +776,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__DeliveryS__deliv__6FE99F9F">
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="1" />
-          <End Role="DeliveryService" Type="Self.DeliveryService" Multiplicity="*" />
+          <End Type="chzkModel.Delivery" Role="Delivery" Multiplicity="1" />
+          <End Type="chzkModel.DeliveryService" Role="DeliveryService" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Delivery">
               <PropertyRef Name="deliveryTrackCode" />
@@ -712,8 +788,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ListItemS__deliv__6477ECF3">
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="1" />
-          <End Role="ListItemSold" Type="Self.ListItemSold" Multiplicity="*" />
+          <End Type="chzkModel.Delivery" Role="Delivery" Multiplicity="1" />
+          <End Type="chzkModel.ListItemSold" Role="ListItemSold" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Delivery">
               <PropertyRef Name="deliveryTrackCode" />
@@ -724,8 +800,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__DeliveryS__deliv__74AE54BC">
-          <End Role="DeliveryService" Type="Self.DeliveryService" Multiplicity="1" />
-          <End Role="DeliveryServiceStatus" Type="Self.DeliveryServiceStatus" Multiplicity="*" />
+          <End Type="chzkModel.DeliveryService" Role="DeliveryService" Multiplicity="1" />
+          <End Type="chzkModel.DeliveryServiceStatus" Role="DeliveryServiceStatus" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DeliveryService">
               <PropertyRef Name="deliveryServiceId" />
@@ -736,8 +812,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__DeliveryS__statu__75A278F5">
-          <End Role="DeliveryStatus" Type="Self.DeliveryStatus" Multiplicity="1" />
-          <End Role="DeliveryServiceStatus" Type="Self.DeliveryServiceStatus" Multiplicity="*" />
+          <End Type="chzkModel.DeliveryStatus" Role="DeliveryStatus" Multiplicity="1" />
+          <End Type="chzkModel.DeliveryServiceStatus" Role="DeliveryServiceStatus" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DeliveryStatus">
               <PropertyRef Name="status" />
@@ -748,8 +824,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ListItemSo__size__66603565">
-          <End Role="DeliverySize" Type="Self.DeliverySize" Multiplicity="1" />
-          <End Role="ListItemSold" Type="Self.ListItemSold" Multiplicity="*" />
+          <End Type="chzkModel.DeliverySize" Role="DeliverySize" Multiplicity="1" />
+          <End Type="chzkModel.ListItemSold" Role="ListItemSold" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DeliverySize">
               <PropertyRef Name="size" />
@@ -760,8 +836,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Store__timeZone__5BE2A6F2">
-          <End Role="TimeZone" Type="Self.TimeZone" Multiplicity="0..1" />
-          <End Role="Store" Type="Self.Store" Multiplicity="*" />
+          <End Type="chzkModel.TimeZone" Role="TimeZone" Multiplicity="0..1" />
+          <End Type="chzkModel.Store" Role="Store" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TimeZone">
               <PropertyRef Name="timeZone1" />
@@ -771,227 +847,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="chzkEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AddressClient" EntityType="Self.AddressClient" />
-          <EntitySet Name="Country" EntityType="Self.Country" />
-          <EntitySet Name="Currency" EntityType="Self.Currency" />
-          <EntitySet Name="Delivery" EntityType="Self.Delivery" />
-          <EntitySet Name="DeliveryService" EntityType="Self.DeliveryService" />
-          <EntitySet Name="DeliveryServiceStatus" EntityType="Self.DeliveryServiceStatus" />
-          <EntitySet Name="DeliverySize" EntityType="Self.DeliverySize" />
-          <EntitySet Name="DeliveryStatus" EntityType="Self.DeliveryStatus" />
-          <EntitySet Name="DocumentType" EntityType="Self.DocumentType" />
-          <EntitySet Name="ListItemSold" EntityType="Self.ListItemSold" />
-          <EntitySet Name="Mode" EntityType="Self.Mode" />
-          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" />
-          <EntitySet Name="ProofPayment" EntityType="Self.ProofPayment" />
-          <EntitySet Name="Store" EntityType="Self.Store" />
-          <EntitySet Name="TimeZone" EntityType="Self.TimeZone" />
-          <AssociationSet Name="FK__AddressCl__count__6A30C649" Association="Self.FK__AddressCl__count__6A30C649">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="AddressClient" EntitySet="AddressClient" />
-          </AssociationSet>
-          <AssociationSet Name="FK__AddressCl__deliv__693CA210" Association="Self.FK__AddressCl__deliv__693CA210">
-            <End Role="Delivery" EntitySet="Delivery" />
-            <End Role="AddressClient" EntitySet="AddressClient" />
-          </AssociationSet>
-          <AssociationSet Name="FK__AddressCl__timeZ__6D0D32F4" Association="Self.FK__AddressCl__timeZ__6D0D32F4">
-            <End Role="TimeZone" EntitySet="TimeZone" />
-            <End Role="AddressClient" EntitySet="AddressClient" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Store__country__5AEE82B9" Association="Self.FK__Store__country__5AEE82B9">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="Store" EntitySet="Store" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListItemS__curre__656C112C" Association="Self.FK__ListItemS__curre__656C112C">
-            <End Role="Currency" EntitySet="Currency" />
-            <End Role="ListItemSold" EntitySet="ListItemSold" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Delivery__docume__619B8048" Association="Self.FK__Delivery__docume__619B8048">
-            <End Role="DocumentType" EntitySet="DocumentType" />
-            <End Role="Delivery" EntitySet="Delivery" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Delivery__mode__5FB337D6" Association="Self.FK__Delivery__mode__5FB337D6">
-            <End Role="Mode" EntitySet="Mode" />
-            <End Role="Delivery" EntitySet="Delivery" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Delivery__paymen__60A75C0F" Association="Self.FK__Delivery__paymen__60A75C0F">
-            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
-            <End Role="Delivery" EntitySet="Delivery" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Delivery__proofP__5EBF139D" Association="Self.FK__Delivery__proofP__5EBF139D">
-            <End Role="ProofPayment" EntitySet="ProofPayment" />
-            <End Role="Delivery" EntitySet="Delivery" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DeliveryS__deliv__6FE99F9F" Association="Self.FK__DeliveryS__deliv__6FE99F9F">
-            <End Role="Delivery" EntitySet="Delivery" />
-            <End Role="DeliveryService" EntitySet="DeliveryService" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListItemS__deliv__6477ECF3" Association="Self.FK__ListItemS__deliv__6477ECF3">
-            <End Role="Delivery" EntitySet="Delivery" />
-            <End Role="ListItemSold" EntitySet="ListItemSold" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DeliveryS__deliv__74AE54BC" Association="Self.FK__DeliveryS__deliv__74AE54BC">
-            <End Role="DeliveryService" EntitySet="DeliveryService" />
-            <End Role="DeliveryServiceStatus" EntitySet="DeliveryServiceStatus" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DeliveryS__statu__75A278F5" Association="Self.FK__DeliveryS__statu__75A278F5">
-            <End Role="DeliveryStatus" EntitySet="DeliveryStatus" />
-            <End Role="DeliveryServiceStatus" EntitySet="DeliveryServiceStatus" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ListItemSo__size__66603565" Association="Self.FK__ListItemSo__size__66603565">
-            <End Role="DeliverySize" EntitySet="DeliverySize" />
-            <End Role="ListItemSold" EntitySet="ListItemSold" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Store__timeZone__5BE2A6F2" Association="Self.FK__Store__timeZone__5BE2A6F2">
-            <End Role="TimeZone" EntitySet="TimeZone" />
-            <End Role="Store" EntitySet="Store" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="chzkModelStoreContainer" CdmEntityContainer="chzkEntities">
-          <EntitySetMapping Name="AddressClient">
-            <EntityTypeMapping TypeName="chzkModel.AddressClient">
-              <MappingFragment StoreEntitySet="AddressClient">
-                <ScalarProperty Name="addressClientId" ColumnName="addressClientId" />
-                <ScalarProperty Name="deliveryTrackCode" ColumnName="deliveryTrackCode" />
-                <ScalarProperty Name="district" ColumnName="district" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="reference" ColumnName="reference" />
-                <ScalarProperty Name="country" ColumnName="country" />
-                <ScalarProperty Name="latitude" ColumnName="latitude" />
-                <ScalarProperty Name="longitude" ColumnName="longitude" />
-                <ScalarProperty Name="timeZone" ColumnName="timeZone" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Country">
-            <EntityTypeMapping TypeName="chzkModel.Country">
-              <MappingFragment StoreEntitySet="Country">
-                <ScalarProperty Name="country1" ColumnName="country" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="timezone" ColumnName="timezone" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Currency">
-            <EntityTypeMapping TypeName="chzkModel.Currency">
-              <MappingFragment StoreEntitySet="Currency">
-                <ScalarProperty Name="currency1" ColumnName="currency" />
-                <ScalarProperty Name="description" ColumnName="description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Delivery">
-            <EntityTypeMapping TypeName="chzkModel.Delivery">
-              <MappingFragment StoreEntitySet="Delivery">
-                <ScalarProperty Name="deliveryTrackCode" ColumnName="deliveryTrackCode" />
-                <ScalarProperty Name="storeId" ColumnName="storeId" />
-                <ScalarProperty Name="proofPayment" ColumnName="proofPayment" />
-                <ScalarProperty Name="deliveryCost" ColumnName="deliveryCost" />
-                <ScalarProperty Name="mode" ColumnName="mode" />
-                <ScalarProperty Name="paymentMethod" ColumnName="paymentMethod" />
-                <ScalarProperty Name="documentType" ColumnName="documentType" />
-                <ScalarProperty Name="documentNumber" ColumnName="documentNumber" />
-                <ScalarProperty Name="contactName" ColumnName="contactName" />
-                <ScalarProperty Name="companyname" ColumnName="companyname" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="postalcode" ColumnName="postalcode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DeliveryService">
-            <EntityTypeMapping TypeName="chzkModel.DeliveryService">
-              <MappingFragment StoreEntitySet="DeliveryService">
-                <ScalarProperty Name="deliveryServiceId" ColumnName="deliveryServiceId" />
-                <ScalarProperty Name="deliveryTrackCode" ColumnName="deliveryTrackCode" />
-                <ScalarProperty Name="storeId" ColumnName="storeId" />
-                <ScalarProperty Name="latitude" ColumnName="latitude" />
-                <ScalarProperty Name="longitude" ColumnName="longitude" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
-                <ScalarProperty Name="chazkiName" ColumnName="chazkiName" />
-                <ScalarProperty Name="message" ColumnName="message" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DeliveryServiceStatus">
-            <EntityTypeMapping TypeName="chzkModel.DeliveryServiceStatus">
-              <MappingFragment StoreEntitySet="DeliveryServiceStatus">
-                <ScalarProperty Name="deliveryServiceStatusId" ColumnName="deliveryServiceStatusId" />
-                <ScalarProperty Name="deliveryServiceId" ColumnName="deliveryServiceId" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="dateStatus" ColumnName="dateStatus" />
-                <ScalarProperty Name="reason" ColumnName="reason" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DeliverySize">
-            <EntityTypeMapping TypeName="chzkModel.DeliverySize">
-              <MappingFragment StoreEntitySet="DeliverySize">
-                <ScalarProperty Name="size" ColumnName="size" />
-                <ScalarProperty Name="description" ColumnName="description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DeliveryStatus">
-            <EntityTypeMapping TypeName="chzkModel.DeliveryStatus">
-              <MappingFragment StoreEntitySet="DeliveryStatus">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="description" ColumnName="description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DocumentType">
-            <EntityTypeMapping TypeName="chzkModel.DocumentType">
-              <MappingFragment StoreEntitySet="DocumentType">
-                <ScalarProperty Name="documentType1" ColumnName="documentType" />
-                <ScalarProperty Name="description" ColumnName="description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ListItemSold">
-            <EntityTypeMapping TypeName="chzkModel.ListItemSold">
-              <MappingFragment StoreEntitySet="ListItemSold">
-                <ScalarProperty Name="itemSoldId" ColumnName="itemSoldId" />
-                <ScalarProperty Name="deliveryTrackCode" ColumnName="deliveryTrackCode" />
-                <ScalarProperty Name="product" ColumnName="product" />
-                <ScalarProperty Name="currency" ColumnName="currency" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="size" ColumnName="size" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Mode">
-            <EntityTypeMapping TypeName="chzkModel.Mode">
-              <MappingFragment StoreEntitySet="Mode">
-                <ScalarProperty Name="mode1" ColumnName="mode" />
-                <ScalarProperty Name="description" ColumnName="description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PaymentMethod">
-            <EntityTypeMapping TypeName="chzkModel.PaymentMethod">
-              <MappingFragment StoreEntitySet="PaymentMethod">
-                <ScalarProperty Name="paymentMethod1" ColumnName="paymentMethod" />
-                <ScalarProperty Name="description" ColumnName="description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProofPayment">
-            <EntityTypeMapping TypeName="chzkModel.ProofPayment">
-              <MappingFragment StoreEntitySet="ProofPayment">
-                <ScalarProperty Name="proofPayment1" ColumnName="proofPayment" />
-                <ScalarProperty Name="description" ColumnName="description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Store">
             <EntityTypeMapping TypeName="chzkModel.Store">
               <MappingFragment StoreEntitySet="Store">
@@ -1006,13 +867,151 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="AddressClient">
+            <EntityTypeMapping TypeName="chzkModel.AddressClient">
+              <MappingFragment StoreEntitySet="AddressClient">
+                <ScalarProperty Name="timeZone" ColumnName="timeZone" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="deliveryTrackCode" ColumnName="deliveryTrackCode" />
+                <ScalarProperty Name="addressClientId" ColumnName="addressClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="chzkModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="timezone" ColumnName="timezone" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="country1" ColumnName="country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currency">
+            <EntityTypeMapping TypeName="chzkModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="currency1" ColumnName="currency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Delivery">
+            <EntityTypeMapping TypeName="chzkModel.Delivery">
+              <MappingFragment StoreEntitySet="Delivery">
+                <ScalarProperty Name="postalcode" ColumnName="postalcode" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="companyname" ColumnName="companyname" />
+                <ScalarProperty Name="contactName" ColumnName="contactName" />
+                <ScalarProperty Name="documentNumber" ColumnName="documentNumber" />
+                <ScalarProperty Name="documentType" ColumnName="documentType" />
+                <ScalarProperty Name="paymentMethod" ColumnName="paymentMethod" />
+                <ScalarProperty Name="mode" ColumnName="mode" />
+                <ScalarProperty Name="deliveryCost" ColumnName="deliveryCost" />
+                <ScalarProperty Name="proofPayment" ColumnName="proofPayment" />
+                <ScalarProperty Name="storeId" ColumnName="storeId" />
+                <ScalarProperty Name="deliveryTrackCode" ColumnName="deliveryTrackCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryService">
+            <EntityTypeMapping TypeName="chzkModel.DeliveryService">
+              <MappingFragment StoreEntitySet="DeliveryService">
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="chazkiName" ColumnName="chazkiName" />
+                <ScalarProperty Name="lastupdate" ColumnName="lastupdate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="storeId" ColumnName="storeId" />
+                <ScalarProperty Name="deliveryTrackCode" ColumnName="deliveryTrackCode" />
+                <ScalarProperty Name="deliveryServiceId" ColumnName="deliveryServiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryServiceStatus">
+            <EntityTypeMapping TypeName="chzkModel.DeliveryServiceStatus">
+              <MappingFragment StoreEntitySet="DeliveryServiceStatus">
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="dateStatus" ColumnName="dateStatus" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="deliveryServiceId" ColumnName="deliveryServiceId" />
+                <ScalarProperty Name="deliveryServiceStatusId" ColumnName="deliveryServiceStatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliverySize">
+            <EntityTypeMapping TypeName="chzkModel.DeliverySize">
+              <MappingFragment StoreEntitySet="DeliverySize">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="size" ColumnName="size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryStatus">
+            <EntityTypeMapping TypeName="chzkModel.DeliveryStatus">
+              <MappingFragment StoreEntitySet="DeliveryStatus">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentType">
+            <EntityTypeMapping TypeName="chzkModel.DocumentType">
+              <MappingFragment StoreEntitySet="DocumentType">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="documentType1" ColumnName="documentType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListItemSold">
+            <EntityTypeMapping TypeName="chzkModel.ListItemSold">
+              <MappingFragment StoreEntitySet="ListItemSold">
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="product" ColumnName="product" />
+                <ScalarProperty Name="deliveryTrackCode" ColumnName="deliveryTrackCode" />
+                <ScalarProperty Name="itemSoldId" ColumnName="itemSoldId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mode">
+            <EntityTypeMapping TypeName="chzkModel.Mode">
+              <MappingFragment StoreEntitySet="Mode">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="mode1" ColumnName="mode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethod">
+            <EntityTypeMapping TypeName="chzkModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="paymentMethod1" ColumnName="paymentMethod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProofPayment">
+            <EntityTypeMapping TypeName="chzkModel.ProofPayment">
+              <MappingFragment StoreEntitySet="ProofPayment">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="proofPayment1" ColumnName="proofPayment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TimeZone">
             <EntityTypeMapping TypeName="chzkModel.TimeZone">
               <MappingFragment StoreEntitySet="TimeZone">
-                <ScalarProperty Name="timeZone1" ColumnName="timeZone" />
-                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
-                <ScalarProperty Name="utc" ColumnName="utc" />
                 <ScalarProperty Name="utcVerano" ColumnName="utcVerano" />
+                <ScalarProperty Name="utc" ColumnName="utc" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="timeZone1" ColumnName="timeZone" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

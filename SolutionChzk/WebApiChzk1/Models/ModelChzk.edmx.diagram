@@ -5,36 +5,36 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c460554af6b44f1b87b16470cdcfca9b" Name="Diagram1">
-        <EntityTypeShape EntityType="chzkModel.AddressClient" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.Country" Width="1.5" PointX="2.875" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.Currency" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.Delivery" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.DeliveryService" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.DeliveryServiceStatus" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.DeliverySize" Width="1.5" PointX="6" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.DeliveryStatus" Width="1.5" PointX="6" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.DocumentType" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.ListItemSold" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.Mode" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.PaymentMethod" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.ProofPayment" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
         <EntityTypeShape EntityType="chzkModel.Store" Width="1.5" PointX="8.25" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.TimeZone" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
-        <AssociationConnector Association="chzkModel.FK__AddressCl__count__6A30C649" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__AddressCl__deliv__693CA210" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__AddressCl__timeZ__6D0D32F4" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__Store__country__5AEE82B9" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__ListItemS__curre__656C112C" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__Delivery__docume__619B8048" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__Delivery__mode__5FB337D6" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__Delivery__paymen__60A75C0F" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__Delivery__proofP__5EBF139D" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__DeliveryS__deliv__6FE99F9F" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__ListItemS__deliv__6477ECF3" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__DeliveryS__deliv__74AE54BC" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__DeliveryS__statu__75A278F5" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__ListItemSo__size__66603565" ManuallyRouted="false" />
-        <AssociationConnector Association="chzkModel.FK__Store__timeZone__5BE2A6F2" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="chzkModel.AddressClient" Width="1.5" PointX="8.625" PointY="7.625" />
+        <EntityTypeShape EntityType="chzkModel.Country" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="chzkModel.Currency" Width="1.5" PointX="3" PointY="16.75" />
+        <EntityTypeShape EntityType="chzkModel.Delivery" Width="1.5" PointX="3" PointY="10.875" />
+        <EntityTypeShape EntityType="chzkModel.DeliveryService" Width="1.5" PointX="5.25" PointY="19.5" />
+        <EntityTypeShape EntityType="chzkModel.DeliveryServiceStatus" Width="1.5" PointX="7.5" PointY="19.875" />
+        <EntityTypeShape EntityType="chzkModel.DeliverySize" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="chzkModel.DeliveryStatus" Width="1.5" PointX="5.25" PointY="16.25" />
+        <EntityTypeShape EntityType="chzkModel.DocumentType" Width="1.5" PointX="0.75" PointY="15.5" />
+        <EntityTypeShape EntityType="chzkModel.ListItemSold" Width="1.5" PointX="5.25" PointY="11.875" />
+        <EntityTypeShape EntityType="chzkModel.Mode" Width="1.5" PointX="0.75" PointY="12.5" />
+        <EntityTypeShape EntityType="chzkModel.PaymentMethod" Width="1.5" PointX="0.75" PointY="10.25" />
+        <EntityTypeShape EntityType="chzkModel.ProofPayment" Width="1.5" PointX="0.75" PointY="17.875" />
+        <EntityTypeShape EntityType="chzkModel.TimeZone" Width="1.5" PointX="6.375" PointY="3.625" />
+        <AssociationConnector Association="chzkModel.FK__AddressCl__count__6A30C649" />
+        <AssociationConnector Association="chzkModel.FK__AddressCl__deliv__693CA210" />
+        <AssociationConnector Association="chzkModel.FK__AddressCl__timeZ__6D0D32F4" />
+        <AssociationConnector Association="chzkModel.FK__Store__country__5AEE82B9" />
+        <AssociationConnector Association="chzkModel.FK__ListItemS__curre__656C112C" />
+        <AssociationConnector Association="chzkModel.FK__Delivery__docume__619B8048" />
+        <AssociationConnector Association="chzkModel.FK__Delivery__mode__5FB337D6" />
+        <AssociationConnector Association="chzkModel.FK__Delivery__paymen__60A75C0F" />
+        <AssociationConnector Association="chzkModel.FK__Delivery__proofP__5EBF139D" />
+        <AssociationConnector Association="chzkModel.FK__DeliveryS__deliv__6FE99F9F" />
+        <AssociationConnector Association="chzkModel.FK__ListItemS__deliv__6477ECF3" />
+        <AssociationConnector Association="chzkModel.FK__DeliveryS__deliv__74AE54BC" />
+        <AssociationConnector Association="chzkModel.FK__DeliveryS__statu__75A278F5" />
+        <AssociationConnector Association="chzkModel.FK__ListItemSo__size__66603565" />
+        <AssociationConnector Association="chzkModel.FK__Store__timeZone__5BE2A6F2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

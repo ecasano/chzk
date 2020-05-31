@@ -7,6 +7,6 @@ namespace WebApiChzk1.Models
 {
     public partial class Store
     {
-
+       // public
     }
 }
