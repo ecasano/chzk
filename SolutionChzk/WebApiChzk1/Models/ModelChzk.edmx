@@ -413,23 +413,8 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="chzkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Store">
-          <Key>
-            <PropertyRef Name="storeId" />
-          </Key>
-          <Property Name="storeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="district" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
-          <Property Name="address" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="reference" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="country" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="latitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="longitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="timeZone" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Country1" Relationship="chzkModel.FK__Store__country__5AEE82B9" FromRole="Store" ToRole="Country" />
-          <NavigationProperty Name="TimeZone1" Relationship="chzkModel.FK__Store__timeZone__5BE2A6F2" FromRole="Store" ToRole="TimeZone" />
-        </EntityType>
         <EntityContainer Name="chzkEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Store" EntityType="Self.Store" />
+          <EntitySet Name="Store" EntityType="chzkModel.Store" />
           <EntitySet Name="AddressClient" EntityType="chzkModel.AddressClient" />
           <EntitySet Name="Country" EntityType="chzkModel.Country" />
           <EntitySet Name="Currency" EntityType="chzkModel.Currency" />
@@ -504,7 +489,22 @@
             <End Role="TimeZone" EntitySet="TimeZone" />
             <End Role="Store" EntitySet="Store" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="storeId" />
+          </Key>
+          <Property Name="storeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="district" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="reference" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="latitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="longitude" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="timeZone" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Country1" Relationship="chzkModel.FK__Store__country__5AEE82B9" FromRole="Store" ToRole="Country" />
+          <NavigationProperty Name="TimeZone1" Relationship="chzkModel.FK__Store__timeZone__5BE2A6F2" FromRole="Store" ToRole="TimeZone" />
+        </EntityType>
         <EntityType Name="AddressClient">
           <Key>
             <PropertyRef Name="addressClientId" />
@@ -847,7 +847,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -856,14 +856,14 @@
           <EntitySetMapping Name="Store">
             <EntityTypeMapping TypeName="chzkModel.Store">
               <MappingFragment StoreEntitySet="Store">
-                <ScalarProperty Name="storeId" ColumnName="storeId" />
-                <ScalarProperty Name="district" ColumnName="district" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="reference" ColumnName="reference" />
-                <ScalarProperty Name="country" ColumnName="country" />
-                <ScalarProperty Name="latitude" ColumnName="latitude" />
-                <ScalarProperty Name="longitude" ColumnName="longitude" />
                 <ScalarProperty Name="timeZone" ColumnName="timeZone" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="storeId" ColumnName="storeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1015,7 +1015,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
