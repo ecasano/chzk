@@ -7,8 +7,8 @@ namespace WebApiChzk1.Models
 {
     public partial class Country
     {
-        chzkEntities db = new chzkEntities();
-        Country country = db.Country.Find();
+        //chzkEntities db = new chzkEntities();
+        //Country country = db.Country.Find();
 
         //  alumno alumno = db.alumnos.Find(this.id);
         //  alumno.edad += 1;

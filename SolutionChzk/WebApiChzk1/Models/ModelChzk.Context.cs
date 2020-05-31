@@ -25,6 +25,7 @@ namespace WebApiChzk1.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Store> Store { get; set; }
         public virtual DbSet<AddressClient> AddressClient { get; set; }
         public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<Currency> Currency { get; set; }
@@ -38,7 +39,6 @@ namespace WebApiChzk1.Models
         public virtual DbSet<Mode> Mode { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethod { get; set; }
         public virtual DbSet<ProofPayment> ProofPayment { get; set; }
-        public virtual DbSet<Store> Store { get; set; }
         public virtual DbSet<TimeZone> TimeZone { get; set; }
     }
 }
