@@ -9,5 +9,7 @@ namespace WebApiChzk1.Transfer
     {
 
         public int storeId { get; set; }
+
+        public string district { get; set; }
     }
 }
