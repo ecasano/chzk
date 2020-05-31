@@ -6,19 +6,19 @@
     <edmx:Diagrams>
       <Diagram DiagramId="c460554af6b44f1b87b16470cdcfca9b" Name="Diagram1">
         <EntityTypeShape EntityType="chzkModel.AddressClient" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.Country" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.Currency" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="chzkModel.Country" Width="1.5" PointX="2.875" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="chzkModel.Currency" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="chzkModel.Delivery" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="chzkModel.DeliveryService" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="chzkModel.DeliveryServiceStatus" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.DeliverySize" Width="1.5" PointX="6" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.DeliveryStatus" Width="1.5" PointX="5.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="chzkModel.DeliverySize" Width="1.5" PointX="6" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="chzkModel.DeliveryStatus" Width="1.5" PointX="6" PointY="14.875" IsExpanded="true" />
         <EntityTypeShape EntityType="chzkModel.DocumentType" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="chzkModel.ListItemSold" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="chzkModel.Mode" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="chzkModel.PaymentMethod" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="chzkModel.ProofPayment" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.Store" Width="1.5" PointX="8.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="chzkModel.Store" Width="1.5" PointX="8.25" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="chzkModel.TimeZone" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
         <AssociationConnector Association="chzkModel.FK__AddressCl__count__6A30C649" ManuallyRouted="false" />
         <AssociationConnector Association="chzkModel.FK__AddressCl__deliv__693CA210" ManuallyRouted="false" />
