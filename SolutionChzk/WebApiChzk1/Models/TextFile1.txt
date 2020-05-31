@@ -1,5 +1,7 @@
 ﻿Proceso de Registro de Envio
 1. Listar tiendas de recojo
+	Clase Ok
+	Controlador Ok
 2. Listar tipos de  comprobantes de pago
 3. Listar modos de envío
 4. Listar países *

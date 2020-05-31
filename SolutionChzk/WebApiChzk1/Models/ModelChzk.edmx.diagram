@@ -5,21 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c460554af6b44f1b87b16470cdcfca9b" Name="Diagram1">
-        <EntityTypeShape EntityType="chzkModel.Store" Width="1.5" PointX="8.25" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="chzkModel.AddressClient" Width="1.5" PointX="8.625" PointY="7.625" />
-        <EntityTypeShape EntityType="chzkModel.Country" Width="1.5" PointX="6.375" PointY="0.75" />
-        <EntityTypeShape EntityType="chzkModel.Currency" Width="1.5" PointX="3" PointY="16.75" />
-        <EntityTypeShape EntityType="chzkModel.Delivery" Width="1.5" PointX="3" PointY="10.875" />
-        <EntityTypeShape EntityType="chzkModel.DeliveryService" Width="1.5" PointX="5.25" PointY="19.5" />
-        <EntityTypeShape EntityType="chzkModel.DeliveryServiceStatus" Width="1.5" PointX="7.5" PointY="19.875" />
-        <EntityTypeShape EntityType="chzkModel.DeliverySize" Width="1.5" PointX="3" PointY="8.375" />
-        <EntityTypeShape EntityType="chzkModel.DeliveryStatus" Width="1.5" PointX="5.25" PointY="16.25" />
-        <EntityTypeShape EntityType="chzkModel.DocumentType" Width="1.5" PointX="0.75" PointY="15.5" />
-        <EntityTypeShape EntityType="chzkModel.ListItemSold" Width="1.5" PointX="5.25" PointY="11.875" />
-        <EntityTypeShape EntityType="chzkModel.Mode" Width="1.5" PointX="0.75" PointY="12.5" />
-        <EntityTypeShape EntityType="chzkModel.PaymentMethod" Width="1.5" PointX="0.75" PointY="10.25" />
-        <EntityTypeShape EntityType="chzkModel.ProofPayment" Width="1.5" PointX="0.75" PointY="17.875" />
-        <EntityTypeShape EntityType="chzkModel.TimeZone" Width="1.5" PointX="6.375" PointY="3.625" />
+        <EntityTypeShape EntityType="chzkModel.Store" Width="1.5" PointX="6.125" PointY="1.875" />
+        <EntityTypeShape EntityType="chzkModel.AddressClient" Width="1.5" PointX="6.5" PointY="7.5" />
+        <EntityTypeShape EntityType="chzkModel.Country" Width="1.5" PointX="4.25" PointY="0.75" />
+        <EntityTypeShape EntityType="chzkModel.Currency" Width="1.5" PointX="3" PointY="16.625" />
+        <EntityTypeShape EntityType="chzkModel.Delivery" Width="1.5" PointX="3" PointY="10.75" />
+        <EntityTypeShape EntityType="chzkModel.DeliveryService" Width="1.5" PointX="5.25" PointY="19.375" />
+        <EntityTypeShape EntityType="chzkModel.DeliveryServiceStatus" Width="1.5" PointX="7.5" PointY="19.75" />
+        <EntityTypeShape EntityType="chzkModel.DeliverySize" Width="1.5" PointX="3" PointY="8.25" />
+        <EntityTypeShape EntityType="chzkModel.DeliveryStatus" Width="1.5" PointX="5.25" PointY="16.125" />
+        <EntityTypeShape EntityType="chzkModel.DocumentType" Width="1.5" PointX="0.75" PointY="12.375" />
+        <EntityTypeShape EntityType="chzkModel.ListItemSold" Width="1.5" PointX="5.25" PointY="11.75" />
+        <EntityTypeShape EntityType="chzkModel.Mode" Width="1.5" PointX="0.75" PointY="10.125" />
+        <EntityTypeShape EntityType="chzkModel.PaymentMethod" Width="1.5" PointX="0.75" PointY="15.375" />
+        <EntityTypeShape EntityType="chzkModel.ProofPayment" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="chzkModel.TimeZone" Width="1.5" PointX="4.25" PointY="3.625" />
         <AssociationConnector Association="chzkModel.FK__AddressCl__count__6A30C649" />
         <AssociationConnector Association="chzkModel.FK__AddressCl__deliv__693CA210" />
         <AssociationConnector Association="chzkModel.FK__AddressCl__timeZ__6D0D32F4" />
@@ -35,7 +35,7 @@
         <AssociationConnector Association="chzkModel.FK__DeliveryS__statu__75A278F5" />
         <AssociationConnector Association="chzkModel.FK__ListItemSo__size__66603565" />
         <AssociationConnector Association="chzkModel.FK__Store__timeZone__5BE2A6F2" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
