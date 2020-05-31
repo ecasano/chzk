@@ -8,13 +8,18 @@ namespace WebApiChzk1.Models
 {
     public partial class Country
     {
-        //chzkEntities db = new chzkEntities();
-        //Country country = db.Country.Find();
+        public static IEnumerable<Countrydt> Paises()
+        {
+            chzkEntities db = new chzkEntities();
+            var list = from b in db.Country
+                       select new Countrydt()
+                       {
+                           country1 = b.country1,
+                           description = b.description,
+                           timezone = b.timezone
 
-        //  alumno alumno = db.alumnos.Find(this.id);
-        //  alumno.edad += 1;
-        //  db.Entry(alumno).State = EntityState.Modified;
-        //  db.SaveChanges();
+                       };
+            return list;
 
-    }
+        }
 }

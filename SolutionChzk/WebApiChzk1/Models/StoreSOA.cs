@@ -32,5 +32,19 @@ namespace WebApiChzk1.Models
                        };
             return list;
         }
+
+        public static IEnumerable<Storedt> ListarTiendas(string distrito, string direccion, string referencia)
+        {
+            chzkEntities db = new chzkEntities();
+            var list = from b in db.Store.Where(t => t.district == distrito && t.address == direccion && t.reference == referencia)
+                       select new Storedt()
+                       {
+                           storeId = b.storeId,
+                           
+                       };
+            return list;
+        }
+
+
     }
 }
