@@ -1,0 +1,13 @@
+﻿1. Listar tiendas de recojo
+2. Listar tipos de  comprobantes de pago
+3. Listar modos de envío
+4. 5Listar países
+5. Listar monedas
+6. Listar tamaños del pedido
+7. Listar tipos de documento del cliente
+
+8. .Agregar producto
+9. Listar productos
+10.Anular producto
+
+11.Registrar datos del envío
