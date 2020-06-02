@@ -22,4 +22,5 @@ namespace WebApiChzk1.Models
             return list;
 
         }
+    }
 }
