@@ -6,8 +6,10 @@ using WebApiChzk1.Transfer;
 
 namespace WebApiChzk1.Models
 {
+
     public partial class Country
     {
+        //listado de paises
         public static IEnumerable<Countrydt> Paises()
         {
             chzkEntities db = new chzkEntities();
