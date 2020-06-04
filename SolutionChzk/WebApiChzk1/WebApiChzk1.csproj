@@ -172,9 +172,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
+    <Compile Include="Controllers\CurrenciesController.cs" />
     <Compile Include="Controllers\DeliveriesController.cs" />
+    <Compile Include="Controllers\DeliverySizesController.cs" />
+    <Compile Include="Controllers\DocumentTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModesController.cs" />
+    <Compile Include="Controllers\PaymentMethodsController.cs" />
     <Compile Include="Controllers\ProofPaymentsController.cs" />
     <Compile Include="Controllers\StoresController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -191,6 +195,7 @@
     <Compile Include="Models\Currency.cs">
       <DependentUpon>ModelChzk.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CurrencySOA.cs" />
     <Compile Include="Models\Delivery.cs">
       <DependentUpon>ModelChzk.tt</DependentUpon>
     </Compile>
@@ -203,6 +208,7 @@
     <Compile Include="Models\DeliverySize.cs">
       <DependentUpon>ModelChzk.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DeliverySizeSOA.cs" />
     <Compile Include="Models\DeliverySOA.cs" />
     <Compile Include="Models\DeliveryStatus.cs">
       <DependentUpon>ModelChzk.tt</DependentUpon>
@@ -210,6 +216,7 @@
     <Compile Include="Models\DocumentType.cs">
       <DependentUpon>ModelChzk.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DocumentTypeSOA.cs" />
     <Compile Include="Models\ListItemSold.cs">
       <DependentUpon>ModelChzk.tt</DependentUpon>
     </Compile>
@@ -235,6 +242,7 @@
     <Compile Include="Models\PaymentMethod.cs">
       <DependentUpon>ModelChzk.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PaymentMethodSOA.cs" />
     <Compile Include="Models\ProofPayment.cs">
       <DependentUpon>ModelChzk.tt</DependentUpon>
     </Compile>
@@ -254,7 +262,11 @@
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Transfer\Countrydt.cs" />
+    <Compile Include="Transfer\Currencydt.cs" />
+    <Compile Include="Transfer\DeliverySizedt.cs" />
+    <Compile Include="Transfer\DocumentTypedt.cs" />
     <Compile Include="Transfer\Modedt.cs" />
+    <Compile Include="Transfer\PaymentMethoddt.cs" />
     <Compile Include="Transfer\ProofPaymentdt.cs" />
     <Compile Include="Transfer\Storedt.cs" />
   </ItemGroup>

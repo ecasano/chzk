@@ -12,11 +12,12 @@
 	Clase Ok
 	Controlador Ok
 5. Listar monedas
+	Clase Ok
+	Controlador Ok
 6. Listar tamaños del pedido
-5. Listar monedas - Julio
-6. Listar tamaños del pedido - 
+	Ok
 7. Listar tipos de documento del cliente
-
+	ok
 8. Agregar producto
 9. Listar productos
 10.Anular producto
