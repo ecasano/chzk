@@ -14,57 +14,50 @@
     <div id="app">
         <div class="container">
 
-            <label for="cars">Choose a car:</label>
-
-            <select name="cars" id="cars">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+            <label for="cmbModos">Modo de envío:</label>
+            <select id="cmbModos">
+                <option v-for="modo in modosenvios" value="{{modo.description}}">{{modo.mode1}}</option>
             </select>
 
-            <h1>Modos</h1>
-            <table class="table">
-                <tr>
-                    <th>
-                        Modo de envio
-                    </th>
-                    <th>
-                        Descipción
-                    </th>
-                </tr>
-                <tr v-for="modo in modosenvio">
-                    <td>
-                        {{modo.mode1}}
-                    </td>
-                    <td>
-                        {{modo.description}}
-                    </td>
-                </tr>
-            </table>
+
+            
+
+            <button onclick="mostrar()">Click me</button>
+
         </div>
 
-        
-
     </div>
+    
+    
+    
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
     <script>
+
+        function mostrar() {
+            
+
+            var combo = document.getElementById("cmbModos");
+            var selected = combo.options[combo.selectedIndex].text;
+            
+            return selected;
+        }
+
         new Vue({
             el: '#app',
             data: {
                 //nombre: "Juan",
                 //cursoid: 1,
                 //nota: [],
-                modosenvio: []
+                modosenvios: []
             },
             mounted: function () {
-                this.fecthModosEnvio();
+                this.fecthModos();
             },
             methods: {
-                fecthModosEnvio: function () {
-                    this.$http.get("http://localhost:49898/api/listarmodoenvio").then(function (response) {
-                        this.modosenvio = response.body;
+                fecthModos: function () {
+                    this.$http.get("http://localhost:49898/api/listarmodoenvio" + mostrar()).then(function (response) {
+                        this.modosenvios = response.body;
                     });
                 }
                
