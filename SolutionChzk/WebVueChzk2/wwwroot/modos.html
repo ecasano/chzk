@@ -53,7 +53,7 @@
             },
             methods: {
                 fecthModosEnvio: function () {
-                    this.$http.get("http://localhost:54610/api/alumnos/bycurso?cursoid=" + this.cursoid).then(function (response) {
+                    this.$http.get("http://localhost:49898/api/listarmodoenvio").then(function (response) {
                         this.modosenvio = response.body;
                     });
                 }
