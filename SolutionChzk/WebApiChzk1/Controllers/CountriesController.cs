@@ -20,7 +20,7 @@ namespace WebApiChzk1.Controllers
     {
         private chzkEntities db = new chzkEntities();
 
-        // GET: api/ListarPaises
+        // GET: api/ListarPaises //
         [HttpGet]
         [Route("api/listarpaises")]
         public IEnumerable<Countrydt> GetListarPaises()
