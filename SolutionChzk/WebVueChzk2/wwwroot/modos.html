@@ -13,44 +13,71 @@
 <body>
     <div id="app">
         <div class="container">
+            <label for="txtdistrito">Distrito:</label>
+            <input type="text" size="15" maxlength="30" value=" " name="txtdistrito"><br />
+            <label for="txtdireccion">Dirección:</label>
+            <input type="text" size="15" maxlength="30" value=" " name="txtdireccion"><br />
+            <label for="txtreferencia">Referencia:</label>
+            <input type="text" size="15" maxlength="30" value=" " name="txtreferencia"><br />
 
-            <label for="cars">Choose a car:</label>
-
-            <select name="cars" id="cars">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+            <label for="cmbPaises">Lista de Paises:</label>
+            <select id="cmbPaises">
+                <option v-for="pais in paises" value="{{pais.country1}}">{{pais.country1}}</option>
+            </select>
+            <br />
+            <label for="cmbModos">Modo de envío:</label>
+            <select id="cmbModos">
+                <option v-for="modo in modosenvio" value="{{modo.mode1}}">{{modo.mode1}}</option>
             </select>
 
-            <h1>Modos</h1>
-            <table class="table">
-                <tr>
-                    <th>
-                        Modo de envio
-                    </th>
-                    <th>
-                        Descipción
-                    </th>
-                </tr>
-                <tr v-for="modo in modosenvio">
-                    <td>
-                        {{modo.mode1}}
-                    </td>
-                    <td>
-                        {{modo.description}}
-                    </td>
-                </tr>
-            </table>
+
+
+            <button onclick="mostrar()">Click me</button>
+
         </div>
 
-        
-
     </div>
+    
+    
+    
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
     <script>
+
+        function mostrar() {
+            
+
+            var combo = document.getElementById("cmbModos");
+            var selected = combo.options[combo.selectedIndex].text;
+            alert(selected);
+            //return selected;
+        }
+
         new Vue({
+            el: '#app1',
+            data: {
+                //nombre: "Juan",
+                //cursoid: 1,
+                //nota: [],
+                paises: []
+            },
+            mounted: function () {
+                this.fecthPaises();
+            },
+            methods: {
+                fecthPaises: function () {
+                    this.$http.get("http://localhost:49898/api/listarpaises").then(function (response) {
+                        this.paises = response.body;
+                    });
+                }
+
+            }
+        });
+
+
+
+        new Vue({
+
             el: '#app',
             data: {
                 //nombre: "Juan",
@@ -70,6 +97,10 @@
                
             }
         });
+
+
+
+
     </script>
 </body>
 </html>
