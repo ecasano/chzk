@@ -10,7 +10,7 @@ namespace WebApiChzk1
         public static void Register(HttpConfiguration config)
         {
             // Configuración y servicios de API web
-
+            config.EnableCors();
             // Rutas de API web
             config.MapHttpAttributeRoutes();
 
@@ -19,6 +19,10 @@ namespace WebApiChzk1
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Formatters.JsonFormatter
+                        .SerializerSettings
+                        .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
     }
 }

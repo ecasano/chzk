@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+
+            <label for="cars">Choose a car:</label>
+
+            <select name="cars" id="cars">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+
+            <h1>Modos</h1>
+            <table class="table">
+                <tr>
+                    <th>
+                        Modo de envio
+                    </th>
+                    <th>
+                        Descipción
+                    </th>
+                </tr>
+                <tr v-for="modo in modosenvio">
+                    <td>
+                        {{modo.mode1}}
+                    </td>
+                    <td>
+                        {{modo.description}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                //nombre: "Juan",
+                //cursoid: 1,
+                //nota: [],
+                modosenvio: []
+            },
+            mounted: function () {
+                this.fecthModosEnvio();
+            },
+            methods: {
+                fecthModosEnvio: function () {
+                    this.$http.get("http://localhost:49898/api/listarmodoenvio").then(function (response) {
+                        this.modosenvio = response.body;
+                    });
+                }
+               
+            }
+        });
+    </script>
+</body>
+</html>

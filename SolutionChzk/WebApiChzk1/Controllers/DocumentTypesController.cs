@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,61 +7,59 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using WebApiChzk1.Models;
 using WebApiChzk1.Transfer;
 
 namespace WebApiChzk1.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class ProofPaymentsController : ApiController
+    public class DocumentTypesController : ApiController
     {
         private chzkEntities db = new chzkEntities();
 
-        // GET: api/ListarComprobantedePago
+        // GET: api/ListarTamaños
         [HttpGet]
-        [Route("api/listarcomprobantepago")]
-        public IEnumerable<ProofPaymentdt> GetComprobantedePago()
+        [Route("api/listartipodocumento")]
+        public IEnumerable<DocumentTypedt> GetListarTipoDocumento()
         {
-            return ProofPayment.ComprobantedePago();
+            return DocumentType.ListarTipoDocumento();
         }
 
 
-        // GET: api/ProofPayments
-        public IQueryable<ProofPayment> GetProofPayment()
+        // GET: api/DocumentTypes
+        public IQueryable<DocumentType> GetDocumentType()
         {
-            return db.ProofPayment;
+            return db.DocumentType;
         }
 
-        // GET: api/ProofPayments/5
-        [ResponseType(typeof(ProofPayment))]
-        public IHttpActionResult GetProofPayment(string id)
+        // GET: api/DocumentTypes/5
+        [ResponseType(typeof(DocumentType))]
+        public IHttpActionResult GetDocumentType(string id)
         {
-            ProofPayment proofPayment = db.ProofPayment.Find(id);
-            if (proofPayment == null)
+            DocumentType documentType = db.DocumentType.Find(id);
+            if (documentType == null)
             {
                 return NotFound();
             }
 
-            return Ok(proofPayment);
+            return Ok(documentType);
         }
 
-        // PUT: api/ProofPayments/5
+        // PUT: api/DocumentTypes/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutProofPayment(string id, ProofPayment proofPayment)
+        public IHttpActionResult PutDocumentType(string id, DocumentType documentType)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != proofPayment.proofPayment1)
+            if (id != documentType.documentType1)
             {
                 return BadRequest();
             }
 
-            db.Entry(proofPayment).State = EntityState.Modified;
+            db.Entry(documentType).State = EntityState.Modified;
 
             try
             {
@@ -70,7 +67,7 @@ namespace WebApiChzk1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProofPaymentExists(id))
+                if (!DocumentTypeExists(id))
                 {
                     return NotFound();
                 }
@@ -83,16 +80,16 @@ namespace WebApiChzk1.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ProofPayments
-        [ResponseType(typeof(ProofPayment))]
-        public IHttpActionResult PostProofPayment(ProofPayment proofPayment)
+        // POST: api/DocumentTypes
+        [ResponseType(typeof(DocumentType))]
+        public IHttpActionResult PostDocumentType(DocumentType documentType)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.ProofPayment.Add(proofPayment);
+            db.DocumentType.Add(documentType);
 
             try
             {
@@ -100,7 +97,7 @@ namespace WebApiChzk1.Controllers
             }
             catch (DbUpdateException)
             {
-                if (ProofPaymentExists(proofPayment.proofPayment1))
+                if (DocumentTypeExists(documentType.documentType1))
                 {
                     return Conflict();
                 }
@@ -110,23 +107,23 @@ namespace WebApiChzk1.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = proofPayment.proofPayment1 }, proofPayment);
+            return CreatedAtRoute("DefaultApi", new { id = documentType.documentType1 }, documentType);
         }
 
-        // DELETE: api/ProofPayments/5
-        [ResponseType(typeof(ProofPayment))]
-        public IHttpActionResult DeleteProofPayment(string id)
+        // DELETE: api/DocumentTypes/5
+        [ResponseType(typeof(DocumentType))]
+        public IHttpActionResult DeleteDocumentType(string id)
         {
-            ProofPayment proofPayment = db.ProofPayment.Find(id);
-            if (proofPayment == null)
+            DocumentType documentType = db.DocumentType.Find(id);
+            if (documentType == null)
             {
                 return NotFound();
             }
 
-            db.ProofPayment.Remove(proofPayment);
+            db.DocumentType.Remove(documentType);
             db.SaveChanges();
 
-            return Ok(proofPayment);
+            return Ok(documentType);
         }
 
         protected override void Dispose(bool disposing)
@@ -138,9 +135,9 @@ namespace WebApiChzk1.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ProofPaymentExists(string id)
+        private bool DocumentTypeExists(string id)
         {
-            return db.ProofPayment.Count(e => e.proofPayment1 == id) > 0;
+            return db.DocumentType.Count(e => e.documentType1 == id) > 0;
         }
     }
 }

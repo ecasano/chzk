@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,61 +7,60 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using WebApiChzk1.Models;
 using WebApiChzk1.Transfer;
 
 namespace WebApiChzk1.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class ProofPaymentsController : ApiController
+    public class PaymentMethodsController : ApiController
     {
         private chzkEntities db = new chzkEntities();
 
-        // GET: api/ListarComprobantedePago
+
+        // GET: api/ListarMetodosdePago
         [HttpGet]
-        [Route("api/listarcomprobantepago")]
-        public IEnumerable<ProofPaymentdt> GetComprobantedePago()
+        [Route("api/listarmetodosdepagos")]
+        public IEnumerable<PaymentMethoddt> GetListarMetodoPago()
         {
-            return ProofPayment.ComprobantedePago();
+            return PaymentMethod.ListarMetodoPago();
         }
 
 
-        // GET: api/ProofPayments
-        public IQueryable<ProofPayment> GetProofPayment()
+        // GET: api/PaymentMethods
+        public IQueryable<PaymentMethod> GetPaymentMethod()
         {
-            return db.ProofPayment;
+            return db.PaymentMethod;
         }
 
-        // GET: api/ProofPayments/5
-        [ResponseType(typeof(ProofPayment))]
-        public IHttpActionResult GetProofPayment(string id)
+        // GET: api/PaymentMethods/5
+        [ResponseType(typeof(PaymentMethod))]
+        public IHttpActionResult GetPaymentMethod(string id)
         {
-            ProofPayment proofPayment = db.ProofPayment.Find(id);
-            if (proofPayment == null)
+            PaymentMethod paymentMethod = db.PaymentMethod.Find(id);
+            if (paymentMethod == null)
             {
                 return NotFound();
             }
 
-            return Ok(proofPayment);
+            return Ok(paymentMethod);
         }
 
-        // PUT: api/ProofPayments/5
+        // PUT: api/PaymentMethods/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutProofPayment(string id, ProofPayment proofPayment)
+        public IHttpActionResult PutPaymentMethod(string id, PaymentMethod paymentMethod)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != proofPayment.proofPayment1)
+            if (id != paymentMethod.paymentMethod1)
             {
                 return BadRequest();
             }
 
-            db.Entry(proofPayment).State = EntityState.Modified;
+            db.Entry(paymentMethod).State = EntityState.Modified;
 
             try
             {
@@ -70,7 +68,7 @@ namespace WebApiChzk1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProofPaymentExists(id))
+                if (!PaymentMethodExists(id))
                 {
                     return NotFound();
                 }
@@ -83,16 +81,16 @@ namespace WebApiChzk1.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ProofPayments
-        [ResponseType(typeof(ProofPayment))]
-        public IHttpActionResult PostProofPayment(ProofPayment proofPayment)
+        // POST: api/PaymentMethods
+        [ResponseType(typeof(PaymentMethod))]
+        public IHttpActionResult PostPaymentMethod(PaymentMethod paymentMethod)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.ProofPayment.Add(proofPayment);
+            db.PaymentMethod.Add(paymentMethod);
 
             try
             {
@@ -100,7 +98,7 @@ namespace WebApiChzk1.Controllers
             }
             catch (DbUpdateException)
             {
-                if (ProofPaymentExists(proofPayment.proofPayment1))
+                if (PaymentMethodExists(paymentMethod.paymentMethod1))
                 {
                     return Conflict();
                 }
@@ -110,23 +108,23 @@ namespace WebApiChzk1.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = proofPayment.proofPayment1 }, proofPayment);
+            return CreatedAtRoute("DefaultApi", new { id = paymentMethod.paymentMethod1 }, paymentMethod);
         }
 
-        // DELETE: api/ProofPayments/5
-        [ResponseType(typeof(ProofPayment))]
-        public IHttpActionResult DeleteProofPayment(string id)
+        // DELETE: api/PaymentMethods/5
+        [ResponseType(typeof(PaymentMethod))]
+        public IHttpActionResult DeletePaymentMethod(string id)
         {
-            ProofPayment proofPayment = db.ProofPayment.Find(id);
-            if (proofPayment == null)
+            PaymentMethod paymentMethod = db.PaymentMethod.Find(id);
+            if (paymentMethod == null)
             {
                 return NotFound();
             }
 
-            db.ProofPayment.Remove(proofPayment);
+            db.PaymentMethod.Remove(paymentMethod);
             db.SaveChanges();
 
-            return Ok(proofPayment);
+            return Ok(paymentMethod);
         }
 
         protected override void Dispose(bool disposing)
@@ -138,9 +136,9 @@ namespace WebApiChzk1.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ProofPaymentExists(string id)
+        private bool PaymentMethodExists(string id)
         {
-            return db.ProofPayment.Count(e => e.proofPayment1 == id) > 0;
+            return db.PaymentMethod.Count(e => e.paymentMethod1 == id) > 0;
         }
     }
 }

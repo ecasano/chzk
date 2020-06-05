@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,61 +7,60 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using WebApiChzk1.Models;
 using WebApiChzk1.Transfer;
 
 namespace WebApiChzk1.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class ProofPaymentsController : ApiController
+    public class CurrenciesController : ApiController
     {
         private chzkEntities db = new chzkEntities();
 
-        // GET: api/ListarComprobantedePago
+        // GET: api/ListarMonedas
         [HttpGet]
-        [Route("api/listarcomprobantepago")]
-        public IEnumerable<ProofPaymentdt> GetComprobantedePago()
+        [Route("api/listarmonedas")]
+        public IEnumerable<Currencydt> GetListarMonedas()
         {
-            return ProofPayment.ComprobantedePago();
+            return Currency.ListarMonedas();
         }
 
 
-        // GET: api/ProofPayments
-        public IQueryable<ProofPayment> GetProofPayment()
+
+        // GET: api/Currencies
+        public IQueryable<Currency> GetCurrency()
         {
-            return db.ProofPayment;
+            return db.Currency;
         }
 
-        // GET: api/ProofPayments/5
-        [ResponseType(typeof(ProofPayment))]
-        public IHttpActionResult GetProofPayment(string id)
+        // GET: api/Currencies/5
+        [ResponseType(typeof(Currency))]
+        public IHttpActionResult GetCurrency(string id)
         {
-            ProofPayment proofPayment = db.ProofPayment.Find(id);
-            if (proofPayment == null)
+            Currency currency = db.Currency.Find(id);
+            if (currency == null)
             {
                 return NotFound();
             }
 
-            return Ok(proofPayment);
+            return Ok(currency);
         }
 
-        // PUT: api/ProofPayments/5
+        // PUT: api/Currencies/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutProofPayment(string id, ProofPayment proofPayment)
+        public IHttpActionResult PutCurrency(string id, Currency currency)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != proofPayment.proofPayment1)
+            if (id != currency.currency1)
             {
                 return BadRequest();
             }
 
-            db.Entry(proofPayment).State = EntityState.Modified;
+            db.Entry(currency).State = EntityState.Modified;
 
             try
             {
@@ -70,7 +68,7 @@ namespace WebApiChzk1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProofPaymentExists(id))
+                if (!CurrencyExists(id))
                 {
                     return NotFound();
                 }
@@ -83,16 +81,16 @@ namespace WebApiChzk1.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ProofPayments
-        [ResponseType(typeof(ProofPayment))]
-        public IHttpActionResult PostProofPayment(ProofPayment proofPayment)
+        // POST: api/Currencies
+        [ResponseType(typeof(Currency))]
+        public IHttpActionResult PostCurrency(Currency currency)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.ProofPayment.Add(proofPayment);
+            db.Currency.Add(currency);
 
             try
             {
@@ -100,7 +98,7 @@ namespace WebApiChzk1.Controllers
             }
             catch (DbUpdateException)
             {
-                if (ProofPaymentExists(proofPayment.proofPayment1))
+                if (CurrencyExists(currency.currency1))
                 {
                     return Conflict();
                 }
@@ -110,23 +108,23 @@ namespace WebApiChzk1.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = proofPayment.proofPayment1 }, proofPayment);
+            return CreatedAtRoute("DefaultApi", new { id = currency.currency1 }, currency);
         }
 
-        // DELETE: api/ProofPayments/5
-        [ResponseType(typeof(ProofPayment))]
-        public IHttpActionResult DeleteProofPayment(string id)
+        // DELETE: api/Currencies/5
+        [ResponseType(typeof(Currency))]
+        public IHttpActionResult DeleteCurrency(string id)
         {
-            ProofPayment proofPayment = db.ProofPayment.Find(id);
-            if (proofPayment == null)
+            Currency currency = db.Currency.Find(id);
+            if (currency == null)
             {
                 return NotFound();
             }
 
-            db.ProofPayment.Remove(proofPayment);
+            db.Currency.Remove(currency);
             db.SaveChanges();
 
-            return Ok(proofPayment);
+            return Ok(currency);
         }
 
         protected override void Dispose(bool disposing)
@@ -138,9 +136,9 @@ namespace WebApiChzk1.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ProofPaymentExists(string id)
+        private bool CurrencyExists(string id)
         {
-            return db.ProofPayment.Count(e => e.proofPayment1 == id) > 0;
+            return db.Currency.Count(e => e.currency1 == id) > 0;
         }
     }
 }

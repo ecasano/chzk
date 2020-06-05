@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,61 +7,61 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using WebApiChzk1.Models;
 using WebApiChzk1.Transfer;
 
 namespace WebApiChzk1.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class ProofPaymentsController : ApiController
+    public class DeliverySizesController : ApiController
     {
         private chzkEntities db = new chzkEntities();
 
-        // GET: api/ListarComprobantedePago
+        // GET: api/ListarTamaños
         [HttpGet]
-        [Route("api/listarcomprobantepago")]
-        public IEnumerable<ProofPaymentdt> GetComprobantedePago()
+        [Route("api/listartamaños")]
+        public IEnumerable<DeliverySizedt> GetListarTamaños()
         {
-            return ProofPayment.ComprobantedePago();
+            return DeliverySize.ListarTamaños();
         }
 
 
-        // GET: api/ProofPayments
-        public IQueryable<ProofPayment> GetProofPayment()
+
+
+        // GET: api/DeliverySizes
+        public IQueryable<DeliverySize> GetDeliverySize()
         {
-            return db.ProofPayment;
+            return db.DeliverySize;
         }
 
-        // GET: api/ProofPayments/5
-        [ResponseType(typeof(ProofPayment))]
-        public IHttpActionResult GetProofPayment(string id)
+        // GET: api/DeliverySizes/5
+        [ResponseType(typeof(DeliverySize))]
+        public IHttpActionResult GetDeliverySize(string id)
         {
-            ProofPayment proofPayment = db.ProofPayment.Find(id);
-            if (proofPayment == null)
+            DeliverySize deliverySize = db.DeliverySize.Find(id);
+            if (deliverySize == null)
             {
                 return NotFound();
             }
 
-            return Ok(proofPayment);
+            return Ok(deliverySize);
         }
 
-        // PUT: api/ProofPayments/5
+        // PUT: api/DeliverySizes/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutProofPayment(string id, ProofPayment proofPayment)
+        public IHttpActionResult PutDeliverySize(string id, DeliverySize deliverySize)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != proofPayment.proofPayment1)
+            if (id != deliverySize.size)
             {
                 return BadRequest();
             }
 
-            db.Entry(proofPayment).State = EntityState.Modified;
+            db.Entry(deliverySize).State = EntityState.Modified;
 
             try
             {
@@ -70,7 +69,7 @@ namespace WebApiChzk1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProofPaymentExists(id))
+                if (!DeliverySizeExists(id))
                 {
                     return NotFound();
                 }
@@ -83,16 +82,16 @@ namespace WebApiChzk1.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ProofPayments
-        [ResponseType(typeof(ProofPayment))]
-        public IHttpActionResult PostProofPayment(ProofPayment proofPayment)
+        // POST: api/DeliverySizes
+        [ResponseType(typeof(DeliverySize))]
+        public IHttpActionResult PostDeliverySize(DeliverySize deliverySize)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.ProofPayment.Add(proofPayment);
+            db.DeliverySize.Add(deliverySize);
 
             try
             {
@@ -100,7 +99,7 @@ namespace WebApiChzk1.Controllers
             }
             catch (DbUpdateException)
             {
-                if (ProofPaymentExists(proofPayment.proofPayment1))
+                if (DeliverySizeExists(deliverySize.size))
                 {
                     return Conflict();
                 }
@@ -110,23 +109,23 @@ namespace WebApiChzk1.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = proofPayment.proofPayment1 }, proofPayment);
+            return CreatedAtRoute("DefaultApi", new { id = deliverySize.size }, deliverySize);
         }
 
-        // DELETE: api/ProofPayments/5
-        [ResponseType(typeof(ProofPayment))]
-        public IHttpActionResult DeleteProofPayment(string id)
+        // DELETE: api/DeliverySizes/5
+        [ResponseType(typeof(DeliverySize))]
+        public IHttpActionResult DeleteDeliverySize(string id)
         {
-            ProofPayment proofPayment = db.ProofPayment.Find(id);
-            if (proofPayment == null)
+            DeliverySize deliverySize = db.DeliverySize.Find(id);
+            if (deliverySize == null)
             {
                 return NotFound();
             }
 
-            db.ProofPayment.Remove(proofPayment);
+            db.DeliverySize.Remove(deliverySize);
             db.SaveChanges();
 
-            return Ok(proofPayment);
+            return Ok(deliverySize);
         }
 
         protected override void Dispose(bool disposing)
@@ -138,9 +137,9 @@ namespace WebApiChzk1.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ProofPaymentExists(string id)
+        private bool DeliverySizeExists(string id)
         {
-            return db.ProofPayment.Count(e => e.proofPayment1 == id) > 0;
+            return db.DeliverySize.Count(e => e.size == id) > 0;
         }
     }
 }
