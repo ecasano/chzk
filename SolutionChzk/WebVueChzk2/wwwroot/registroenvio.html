@@ -12,9 +12,7 @@
 	
 	
     function mostrarTab(tabname) {
-        //prueba
-		//enableLink(getElementById('nav-paquete-tab'); 
-		//$('.nav-tabs a[href="#nav-'+tabname+'"]').setAttribute('classList', 'nav-item nav-link');
+        
 		$('.nav-tabs a[href="#nav-'+tabname+'"]').tab('show');
 	}
 	
@@ -55,9 +53,7 @@
     <a class="nav-item nav-link" id="nav-destino-tab" data-toggle="tab" href="#nav-destino" role="tab" aria-controls="nav-destino" aria-selected="false">Destino</a>
 
     <a class="nav-item nav-link" id="nav-mediopago-tab" data-toggle="tab" href="#nav-mediopago" role="tab" aria-controls="nav-mediopago" aria-selected="false">Medio Pago</a>
-
-    <a class="nav-item nav-link" id="nav-mediopago-tab" data-toggle="tab" href="#nav-mediopago" role="tab" aria-controls="nav-mediopago" aria-selected="false">Medio Pago</a>
-
+      
     <a class="nav-item nav-link" id="nav-horariorecojo-tab" data-toggle="tab" href="#nav-horariorecojo" role="tab" aria-controls="nav-horariorecojo" aria-selected="false">Horario Recojo</a>
 
     <a class="nav-item nav-link" id="nav-comprobantepago-tab" data-toggle="tab" href="#nav-comprobantepago" role="tab" aria-controls="nav-comprobantepago" aria-selected="false">Comprobante Pago</a>
@@ -68,13 +64,127 @@
 </nav>
 
 <div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-origen" role="tabpanel" aria-labelledby="nav-origen-tab">
-  	
-  	origen
-  	</br>
-  	<button type="button" class="btn btn-primary" onclick="mostrarTab('paquete')" >Siguiente</button>
+    <div class="tab-pane fade show active" id="nav-origen" role="tabpanel" aria-labelledby="nav-origen-tab">
 
-  </div>
+
+        <div id="app">
+            <div class="container">
+                <label for="txtdistrito">Distrito:</label>
+                <input type="text" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito"><br />
+
+                <label for="txtdireccion">Dirección:</label>
+                <input type="text" size="15" maxlength="30" v-model="direccion" name="txtdireccion" id="txtdireccion"><br />
+
+                <label for="txtreferencia">Referencia:</label>
+                <input type="text" size="15" maxlength="30" v-model="referencia" name="txtreferencia" id="txtreferencia"><br />
+
+                <button type="button" class="btn btn-primary" @click="obtenerCodigoTienda()">Traer codigo tienda</button><br />
+                <label for="txttienda">Tienda:</label>
+                <select id="cmbTiendas" v-model="selectedTienda">
+                    <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.storeId}}</option>
+                </select><br />
+
+                <label for="cmbPaises">Lista de Paises:</label>
+                <select id="cmbPaises" v-model="selectedPais">
+                    <option v-for="pais in paises" v-bind:value="pais.country1">{{pais.country1}}</option>
+                </select><br />
+
+                <label for="cmbModos">Modo de envío:</label>
+                <select id="cmbModos" v-model="selectedModo">
+                    <option v-for="mod in modosenvio" v-bind:value="mod.mode1">{{mod.mode1}}</option>
+                </select><br />
+
+                <label for="cmbTipoDocumento">Tipo de Documento:</label>
+                <select id="cmbTipoDocumento" v-model="selectedTipoDocumento">
+                    <option v-for="tipo in tipos" v-bind:value="tipo.documentType1">{{tipo.documentType1}}</option>
+                </select><br />
+
+                <button onclick="input_tienda()">Click me</button>
+
+            </div>
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+        <script>
+
+            function input_tienda() {
+                var input = "obtenerCodigoTienda('";
+                input += document.getElementById('txtdistrito').value + "','" + document.getElementById('txtdireccion').value + "','" + document.getElementById('txtreferencia').value;
+                input += "')";
+                alert(input);
+                //return input;
+                //prueba
+            }
+
+            function mostrar() {
+
+                var distrito = document.getElementById("txtdistrito").value;
+
+                alert(distrito);
+
+            }
+
+
+            new Vue({
+
+                el: '#app',
+                data: {
+                    distrito: "",
+                    direccion: "",
+                    referencia: "",
+                    modosenvio: [],
+                    selectedModo: "",
+                    paises: [],
+                    selectedPais: "",
+                    tiendas: [],
+                    selectedTienda: "",
+                    contactoRecojo: "",
+                    tipos: [],
+                    selectedTipoDocumento: ""
+                },
+                mounted: function () {
+                    this.fecthModosEnvio();
+                    this.fecthPaises();
+                    this.obtenerTiposDocumento();
+                },
+                methods: {
+                    fecthModosEnvio: function () {
+                        this.$http.get("http://localhost:49898/api/listarmodoenvio").then(function (response) {
+                            this.modosenvio = response.body;
+                        });
+                    },
+                    fecthPaises: function () {
+                        this.$http.get("http://localhost:49898/api/listarpaises").then(function (response) {
+                            this.paises = response.body;
+                        });
+                    },
+                    obtenerCodigoTienda: function () {
+                        this.$http.get("http://localhost:49898/api/listartiendas?distrito=" + this.distrito + "&direccion=" + this.direccion + "&referencia=" + this.referencia).then(function (response) {
+                            this.tiendas = response.body;
+                        });
+                    },
+                    obtenerTiposDocumento: function () {
+                        this.$http.get("http://localhost:49898/api/listartipodocumento").then(function (response) {
+                            this.tipos = response.body;
+                        });
+                    }
+
+
+                }
+            });
+
+
+
+
+        </script>
+
+
+        </br>
+        <button type="button" class="btn btn-primary" onclick="mostrarTab('paquete')">Siguiente</button>
+
+    </div>
 
   <div class="tab-pane fade" id="nav-paquete" role="tabpanel" aria-labelledby="nav-paquete-tab">
 
