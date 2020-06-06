@@ -20,7 +20,7 @@ namespace WebApiChzk1.Controllers
     {
         private chzkEntities db = new chzkEntities();
 
-        // GET: api/Tiendas
+        // GET: api/Tiendas //
         [HttpGet]
         [Route("api/tiendas")]
         public IEnumerable<Storedt> GetTiendas()

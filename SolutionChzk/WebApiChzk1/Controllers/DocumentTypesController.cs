@@ -19,7 +19,7 @@ namespace WebApiChzk1.Controllers
     {
         private chzkEntities db = new chzkEntities();
 
-        // GET: api/ListarTamaños
+        // GET: api/ListarTamaños //
         [HttpGet]
         [Route("api/listartipodocumento")]
         public IEnumerable<DocumentTypedt> GetListarTipoDocumento()

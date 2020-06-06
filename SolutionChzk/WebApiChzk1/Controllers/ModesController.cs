@@ -21,7 +21,7 @@ namespace WebApiChzk1.Controllers
         private chzkEntities db = new chzkEntities();
 
 
-        // GET: api/ListarModoEnvio
+        // GET: api/ListarModoEnvio //
         [HttpGet]
         [Route("api/listarmodoenvio")]
         public IEnumerable<Modedt> GetMododeEnvio()

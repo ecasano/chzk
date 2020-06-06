@@ -19,7 +19,7 @@ namespace WebApiChzk1.Controllers
     {
         private chzkEntities db = new chzkEntities();
 
-        // GET: api/ListarMonedas
+        // GET: api/ListarMonedas //
         [HttpGet]
         [Route("api/listarmonedas")]
         public IEnumerable<Currencydt> GetListarMonedas()

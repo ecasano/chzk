@@ -9,10 +9,7 @@ namespace WebApiChzk1.Models
 
     public partial class Country
     {
-        //listado de paises
-
-        //listado de paises 2
-
+        
         public static IEnumerable<Countrydt> ListarPaises()
         {
             chzkEntities db = new chzkEntities();

@@ -20,7 +20,7 @@ namespace WebApiChzk1.Controllers
     {
         private chzkEntities db = new chzkEntities();
 
-        // GET: api/ListarComprobantedePago
+        // GET: api/ListarComprobantedePago //
         [HttpGet]
         [Route("api/listarcomprobantepago")]
         public IEnumerable<ProofPaymentdt> GetComprobantedePago()

@@ -20,7 +20,7 @@ namespace WebApiChzk1.Controllers
     {
         private chzkEntities db = new chzkEntities();
 
-        // GET: api/Deliveries
+        // GET: api/Deliveries //
         public IQueryable<Delivery> GetDelivery()
         {
             return db.Delivery;

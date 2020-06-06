@@ -43,9 +43,14 @@
 
             <div class="row">
                 <div class="col-sm">
-
-                    Origen: <input type="text" class="form-control-sm"  v-model="origin">
-                    Destino: <input type="text" class="form-control-sm" v-model="destination">
+                    <div class="form-group row">
+                        <label for="txtdireccion" class="col-sm-2 col-form-label">Origen:</label>
+                        <input type="text" class="form-control form-control-sm" v-model="origin">
+                    </div>
+                    <div class="form-group row">
+                        <label for="txtdireccion" class="col-sm-2 col-form-label">Destino:</label>
+                        <input type="text" class="form-control form-control-sm" v-model="destination">
+                    </div>
                     <iframe width="100%" height="500px" v-bind:src="src()"></iframe>
 
                 </div>
@@ -78,41 +83,41 @@
                   
                       <div class="form-group">
                           <label for="txtdistrito" class="col-sm-2 col-form-label">Distrito:</label>
-                          <input type="text" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito">
+                          <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito">
                       </div>
 
-                                <div class="form-group">
+                                <div class="form-group row">
                                     <label for="txtdireccion" class="col-sm-2 col-form-label">Dirección:</label>
                                     <input type="text" size="15" maxlength="30" v-model="direccion" name="txtdireccion" id="txtdireccion"><br />
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group row">
                                     <label for="txtreferencia" class="col-sm-2 col-form-label">Referencia:</label>
                                     <input type="text" size="15" maxlength="30" v-model="referencia" name="txtreferencia" id="txtreferencia">
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group row">
                                     <button type="button" class="btn btn-primary col-sm-2" @click="obtenerCodigoTienda()">Traer codigo tienda</button>
                                     <select id="cmbTiendas" v-model="selectedTienda">
                                         <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.storeId}}</option>
                                     </select><br />
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group row">
                                     <label for="cmbPaises" class="col-sm-2 col-form-label">Lista de Paises:</label>
                                     <select id="cmbPaises" v-model="selectedPais">
                                         <option v-for="pais in paises" v-bind:value="pais.country1">{{pais.country1}}</option>
                                     </select><br />
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group row">
                                     <label for="cmbModos" class="col-sm-2 col-form-label">Modo de envío:</label>
                                     <select id="cmbModos" v-model="selectedModo">
                                         <option v-for="mod in modosenvio" v-bind:value="mod.mode1">{{mod.mode1}}</option>
                                     </select><br />
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group row">
                                     <label for="cmbTipoDocumento" class="col-sm-2 col-form-label">Tipo de Documento:</label>
                                     <select id="cmbTipoDocumento" v-model="selectedTipoDocumento">
                                         <option v-for="tipo in tipos" v-bind:value="tipo.documentType1">{{tipo.documentType1}}</option>
