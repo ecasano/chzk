@@ -13,11 +13,14 @@
 
 </head>
 <body>
+	<?php
+	header('X-Frame-Options: GOFORIT');
+	?>
 	<div id="app">
 		Origen: <input type="text" v-model="origin">
 		Destino: <input type="text" v-model="destination">
 		<iframe width="100%" height="500px" v-bind:src="src()"></iframe>
-		
+
 	</div>
 </body>
 <script type="text/javascript">
@@ -31,6 +34,7 @@ var vue_app = new Vue({
 	methods:{
 		src:function(){
 			//return this.url+"&origin="+this.origin+"&destination="+this.destination;
+            //prueba
             return "https://maps.googleapis.com/maps/api/directions/json?origin=Disneyland&destination=Universal+Studios+Hollywood&key=AIzaSyB7uYHbgeB8gEPnrEGOlCsxubBDXowPM_w";
 		}
 

@@ -22,178 +22,245 @@
 
 <body>
 
-<div class="container">
-<p></p>
-
-
-
-<nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand" href="#">
-	<img src="https://ii.ct-stc.com/3/logos/empresas/2017/12/22/blue-express-E9AF1254F4EFE80B162438593thumbnail.png"  width="85" height="30"class="d-inline-block align-top" alt="">&nbsp;&nbsp;&nbsp;
-	Registro de Envío
-  </a>
-  <form class="form-inline">
-    <span id="txtCorreo" name="txtCorreo">email@example.com</span>
-    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-    <a href="principal.html">
-          Logout
-    </a>
-  </form>
-</nav>
-
-
-
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-  	
-    <a class="nav-item nav-link"  id="nav-origen-tab" data-toggle="tab" href="#nav-origen" role="tab" aria-controls="nav-origen" aria-selected="true" >Origen</a>
-
-	<a class="nav-item nav-link" id="nav-paquete-tab" data-toggle="tab" href="#nav-paquete" role="tab" aria-controls="nav-paquete" aria-selected="false">Paquete</a>
-
-    <a class="nav-item nav-link" id="nav-destino-tab" data-toggle="tab" href="#nav-destino" role="tab" aria-controls="nav-destino" aria-selected="false">Destino</a>
-
-    <a class="nav-item nav-link" id="nav-mediopago-tab" data-toggle="tab" href="#nav-mediopago" role="tab" aria-controls="nav-mediopago" aria-selected="false">Medio Pago</a>
-      
-    <a class="nav-item nav-link" id="nav-horariorecojo-tab" data-toggle="tab" href="#nav-horariorecojo" role="tab" aria-controls="nav-horariorecojo" aria-selected="false">Horario Recojo</a>
-
-    <a class="nav-item nav-link" id="nav-comprobantepago-tab" data-toggle="tab" href="#nav-comprobantepago" role="tab" aria-controls="nav-comprobantepago" aria-selected="false">Comprobante Pago</a>
-
-  </div>
-
-  
-</nav>
-
-<div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-origen" role="tabpanel" aria-labelledby="nav-origen-tab">
+    <div class="container">
         <p></p>
-          <div id="app">
-              <form class="container">
-                  
-                      <div class="form-group">
-                          <label for="txtdistrito" class="col-sm-2 col-form-label">Distrito:</label>
-                          <input type="text" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito">
-                      </div>
+        <div id="app">
 
-                      <div class="form-group">
-                          <label for="txtdireccion" class="col-sm-2 col-form-label">Dirección:</label>
-                          <input type="text" size="15" maxlength="30" v-model="direccion" name="txtdireccion" id="txtdireccion"><br />
-                      </div>
+            <nav class="navbar navbar-light bg-light justify-content-between">
+                <a class="navbar-brand" href="#">
+                    <img src="https://ii.ct-stc.com/3/logos/empresas/2017/12/22/blue-express-E9AF1254F4EFE80B162438593thumbnail.png" width="85" height="30" class="d-inline-block align-top" alt="">&nbsp;&nbsp;&nbsp;
+                    Registro de Envío
+                </a>
+                <form class="form-inline">
+                    <span id="txtCorreo" name="txtCorreo">email@example.com</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <a href="principal.html">
+                        Logout
+                    </a>
+                </form>
+            </nav>
 
-                      <div class="form-group">
-                          <label for="txtreferencia" class="col-sm-2 col-form-label">Referencia:</label>
-                          <input type="text" size="15" maxlength="30" v-model="referencia" name="txtreferencia" id="txtreferencia">
-                      </div>
 
-                      <div class="form-group">
-                          <button type="button" class="btn btn-primary col-sm-2" @click="obtenerCodigoTienda()">Traer codigo tienda</button>
-                          <select id="cmbTiendas" v-model="selectedTienda">
-                              <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.storeId}}</option>
-                          </select><br />
-                      </div>
+            <div class="row">
+                <div class="col-sm">
 
-                      <div class="form-group">
-                          <label for="cmbPaises" class="col-sm-2 col-form-label">Lista de Paises:</label>
-                          <select id="cmbPaises" v-model="selectedPais">
-                              <option v-for="pais in paises" v-bind:value="pais.country1">{{pais.country1}}</option>
-                          </select><br />
-                      </div>
+                    Origen: <input type="text" v-model="origin">
+                    Destino: <input type="text" v-model="destination">
+                    <iframe width="100%" height="500px" v-bind:src="src()"></iframe>
 
-                      <div class="form-group">
-                          <label for="cmbModos" class="col-sm-2 col-form-label">Modo de envío:</label>
-                          <select id="cmbModos" v-model="selectedModo">
-                              <option v-for="mod in modosenvio" v-bind:value="mod.mode1">{{mod.mode1}}</option>
-                          </select><br />
-                      </div>
+                </div>
 
-                      <div class="form-group">
-                          <label for="cmbTipoDocumento" class="col-sm-2 col-form-label">Tipo de Documento:</label>
-                          <select id="cmbTipoDocumento" v-model="selectedTipoDocumento">
-                              <option v-for="tipo in tipos" v-bind:value="tipo.documentType1">{{tipo.documentType1}}</option>
-                          </select><br />
-                      </div>
+                <div class="col-sm">
 
-                      <div class="form-group">
-                          <button onclick="input_tienda()">Click me</button>
-                      </div>
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
-                   </form>
+                            <a class="nav-item nav-link" id="nav-origen-tab" data-toggle="tab" href="#nav-origen" role="tab" aria-controls="nav-origen" aria-selected="true">Origen</a>
+
+                            <a class="nav-item nav-link" id="nav-paquete-tab" data-toggle="tab" href="#nav-paquete" role="tab" aria-controls="nav-paquete" aria-selected="false">Paquete</a>
+
+                            <a class="nav-item nav-link" id="nav-destino-tab" data-toggle="tab" href="#nav-destino" role="tab" aria-controls="nav-destino" aria-selected="false">Destino</a>
+
+                            <a class="nav-item nav-link" id="nav-mediopago-tab" data-toggle="tab" href="#nav-mediopago" role="tab" aria-controls="nav-mediopago" aria-selected="false">Medio Pago</a>
+
+                            <a class="nav-item nav-link" id="nav-horariorecojo-tab" data-toggle="tab" href="#nav-horariorecojo" role="tab" aria-controls="nav-horariorecojo" aria-selected="false">Horario Recojo</a>
+
+                            <a class="nav-item nav-link" id="nav-comprobantepago-tab" data-toggle="tab" href="#nav-comprobantepago" role="tab" aria-controls="nav-comprobantepago" aria-selected="false">Comprobante Pago</a>
+
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-origen" role="tabpanel" aria-labelledby="nav-origen-tab">
+                            <p></p>
+
+                            <form class="container">
+
+                                <div class="form-group">
+                                    <label for="txtdistrito" class="col-sm-2 col-form-label">Distrito:</label>
+                                    <input type="text" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txtdireccion" class="col-sm-2 col-form-label">Dirección:</label>
+                                    <input type="text" size="15" maxlength="30" v-model="direccion" name="txtdireccion" id="txtdireccion"><br />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txtreferencia" class="col-sm-2 col-form-label">Referencia:</label>
+                                    <input type="text" size="15" maxlength="30" v-model="referencia" name="txtreferencia" id="txtreferencia">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary col-sm-2" @click="obtenerCodigoTienda()">Traer codigo tienda</button>
+                                    <select id="cmbTiendas" v-model="selectedTienda">
+                                        <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.storeId}}</option>
+                                    </select><br />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cmbPaises" class="col-sm-2 col-form-label">Lista de Paises:</label>
+                                    <select id="cmbPaises" v-model="selectedPais">
+                                        <option v-for="pais in paises" v-bind:value="pais.country1">{{pais.country1}}</option>
+                                    </select><br />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cmbModos" class="col-sm-2 col-form-label">Modo de envío:</label>
+                                    <select id="cmbModos" v-model="selectedModo">
+                                        <option v-for="mod in modosenvio" v-bind:value="mod.mode1">{{mod.mode1}}</option>
+                                    </select><br />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cmbTipoDocumento" class="col-sm-2 col-form-label">Tipo de Documento:</label>
+                                    <select id="cmbTipoDocumento" v-model="selectedTipoDocumento">
+                                        <option v-for="tipo in tipos" v-bind:value="tipo.documentType1">{{tipo.documentType1}}</option>
+                                    </select><br />
+                                </div>
+
+                            </form>
+
+
+
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-paquete" role="tabpanel" aria-labelledby="nav-paquete-tab">
+
+                            paquete
+                            </br>
+                            <button type="button" class="btn btn-primary" onclick="mostrarTab('destino')">Siguiente</button>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-destino" role="tabpanel" aria-labelledby="nav-destino-tab">
+
+                            destino
+                            </br>
+                            <button type="button" class="btn btn-primary" onclick="mostrarTab('mediopago')">Siguiente</button>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-mediopago" role="tabpanel" aria-labelledby="nav-mediopago-tab">
+
+                            mediopago
+                            </br>
+                            <button type="button" class="btn btn-primary" onclick="mostrarTab('horariorecojo')">Siguiente</button>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-horariorecojo" role="tabpanel" aria-labelledby="nav-horariorecojo-tab">
+
+                            horariorecojo
+                            </br>
+                            <button type="button" class="btn btn-primary" onclick="mostrarTab('comprobantepago')">comprobantepago</button>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-comprobantepago" role="tabpanel" aria-labelledby="nav-comprobantepago-tab">
+
+                            comprobantepago
+                            </br>
+                            <button type="button" class="btn btn-primary" onclick="alert('llamar a la api de registro')">enviar</button>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
 
             </div>
 
-                      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-                      <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
-                      <script>
-
-                          function input_tienda() {
-                              var input = "obtenerCodigoTienda('";
-                              input += document.getElementById('txtdistrito').value + "','" + document.getElementById('txtdireccion').value + "','" + document.getElementById('txtreferencia').value;
-                              input += "')";
-                              alert(input);
-                              //return input;
-                              //prueba
-                          }
-
-                          function mostrar() {
-
-                              var distrito = document.getElementById("txtdistrito").value;
-
-                              alert(distrito);
-
-                          }
-
-
-                          new Vue({
-
-                              el: '#app',
-                              data: {
-                                  distrito: "",
-                                  direccion: "",
-                                  referencia: "",
-                                  modosenvio: [],
-                                  selectedModo: "",
-                                  paises: [],
-                                  selectedPais: "",
-                                  tiendas: [],
-                                  selectedTienda: "",
-                                  contactoRecojo: "",
-                                  tipos: [],
-                                  selectedTipoDocumento: ""
-                              },
-                              mounted: function () {
-                                  this.fecthModosEnvio();
-                                  this.fecthPaises();
-                                  this.obtenerTiposDocumento();
-                              },
-                              methods: {
-                                  fecthModosEnvio: function () {
-                                      this.$http.get("http://localhost:49898/api/listarmodoenvio").then(function (response) {
-                                          this.modosenvio = response.body;
-                                      });
-                                  },
-                                  fecthPaises: function () {
-                                      this.$http.get("http://localhost:49898/api/listarpaises").then(function (response) {
-                                          this.paises = response.body;
-                                      });
-                                  },
-                                  obtenerCodigoTienda: function () {
-                                      this.$http.get("http://localhost:49898/api/listartiendas?distrito=" + this.distrito + "&direccion=" + this.direccion + "&referencia=" + this.referencia).then(function (response) {
-                                          this.tiendas = response.body;
-                                      });
-                                  },
-                                  obtenerTiposDocumento: function () {
-                                      this.$http.get("http://localhost:49898/api/listartipodocumento").then(function (response) {
-                                          this.tipos = response.body;
-                                      });
-                                  }
-
-
-                              }
-                          });
+            
 
 
 
+        </div>
 
-                      </script>
+    </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+        <script>
+
+            function input_tienda() {
+                var input = "obtenerCodigoTienda('";
+                input += document.getElementById('txtdistrito').value + "','" + document.getElementById('txtdireccion').value + "','" + document.getElementById('txtreferencia').value;
+                input += "')";
+                alert(input);
+                //return input;
+                //prueba
+            }
+
+            function mostrar() {
+
+                var distrito = document.getElementById("txtdistrito").value;
+
+                alert(distrito);
+
+            }
+
+
+            new Vue({
+
+                el: '#app',
+                data: {
+                    distrito: "",
+                    direccion: "",
+                    referencia: "",
+                    modosenvio: [],
+                    selectedModo: "",
+                    paises: [],
+                    selectedPais: "",
+                    tiendas: [],
+                    selectedTienda: "",
+                    contactoRecojo: "",
+                    tipos: [],
+                    selectedTipoDocumento: "",
+                    origin: 'jesus maria',
+                    destination: 'cercado de lima',
+                    url: "https://www.google.com/maps/embed/v1/directions?key=AIzaSyB7uYHbgeB8gEPnrEGOlCsxubBDXowPM_w"
+                },
+                mounted: function () {
+                    this.fecthModosEnvio();
+                    this.fecthPaises();
+                    this.obtenerTiposDocumento();
+                },
+                methods: {
+                    src: function () {
+                        return this.url + "&origin=" + this.origin + "&destination=" + this.destination;
+
+                    },
+                    fecthModosEnvio: function () {
+                        this.$http.get("http://localhost:49898/api/listarmodoenvio").then(function (response) {
+                            this.modosenvio = response.body;
+                        });
+                    },
+                    fecthPaises: function () {
+                        this.$http.get("http://localhost:49898/api/listarpaises").then(function (response) {
+                            this.paises = response.body;
+                        });
+                    },
+                    obtenerCodigoTienda: function () {
+                        this.$http.get("http://localhost:49898/api/listartiendas?distrito=" + this.distrito + "&direccion=" + this.direccion + "&referencia=" + this.referencia).then(function (response) {
+                            this.tiendas = response.body;
+                        });
+                    },
+                    obtenerTiposDocumento: function () {
+                        this.$http.get("http://localhost:49898/api/listartipodocumento").then(function (response) {
+                            this.tipos = response.body;
+                        });
+                    }
+
+
+                }
+            });
+
+
+
+
+        </script>
 
 
                       </br>
