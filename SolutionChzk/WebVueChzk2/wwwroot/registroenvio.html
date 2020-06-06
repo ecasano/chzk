@@ -70,16 +70,16 @@
                         </div>
                     </nav>
 
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-origen" role="tabpanel" aria-labelledby="nav-origen-tab">
-                            <p></p>
-
-                            <form class="container">
-
-                                <div class="form-group">
-                                    <label for="txtdistrito" class="col-sm-2 col-form-label">Distrito:</label>
-                                    <input type="text" class="form-control-sm" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito">
-                                </div>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-origen" role="tabpanel" aria-labelledby="nav-origen-tab">
+        <p></p>
+          <div id="app">
+              <form class="container">
+                  
+                      <div class="form-group">
+                          <label for="txtdistrito" class="col-sm-2 col-form-label">Distrito:</label>
+                          <input type="text" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito">
+                      </div>
 
                                 <div class="form-group">
                                     <label for="txtdireccion" class="col-sm-2 col-form-label">Dirección:</label>
@@ -261,6 +261,57 @@
 
 
         </script>
+
+
+                      </br>
+                      <button type="button" class="btn btn-primary" onclick="mostrarTab('paquete')">Siguiente</button>
+
+              </div>
+
+  <div class="tab-pane fade" id="nav-paquete" role="tabpanel" aria-labelledby="nav-paquete-tab">
+
+  	paquete
+  	</br>
+  	<button type="button" class="btn btn-primary" onclick="mostrarTab('destino')" >Siguiente</button>
+
+  </div>
+
+  <div class="tab-pane fade" id="nav-destino" role="tabpanel" aria-labelledby="nav-destino-tab">
+  	
+  	destino
+  	</br>
+  	<button type="button" class="btn btn-primary" onclick="mostrarTab('mediopago')" >Siguiente</button>
+
+  </div>
+
+  <div class="tab-pane fade" id="nav-mediopago" role="tabpanel" aria-labelledby="nav-mediopago-tab">
+  	
+  	mediopago
+  	</br>
+  	<button type="button" class="btn btn-primary" onclick="mostrarTab('horariorecojo')" >Siguiente</button>
+
+  </div>
+
+  <div class="tab-pane fade" id="nav-horariorecojo" role="tabpanel" aria-labelledby="nav-horariorecojo-tab">
+  	
+  	horariorecojo
+  	</br>
+  	<button type="button" class="btn btn-primary" onclick="mostrarTab('comprobantepago')" >comprobantepago</button>
+
+  </div>
+
+  <div class="tab-pane fade" id="nav-comprobantepago" role="tabpanel" aria-labelledby="nav-comprobantepago-tab">
+  	
+  	comprobantepago
+  	</br>
+  	<button type="button" class="btn btn-primary" onclick="alert('llamar a la api de registro')" >enviar</button>
+
+  </div>
+</div>
+
+</div>
+
+
 
 </body>
 
