@@ -63,6 +63,8 @@
 
                             <a class="nav-item nav-link" id="nav-origen-tab" data-toggle="tab" href="#nav-origen" role="tab" aria-controls="nav-origen" aria-selected="true">Origen</a>
 
+                            <a class="nav-item nav-link" id="nav-datosenvio-tab" data-toggle="tab" href="#nav-datosenvio" role="tab" aria-controls="nav-datosenvio" aria-selected="false">Datos Envio</a>
+
                             <a class="nav-item nav-link" id="nav-paquete-tab" data-toggle="tab" href="#nav-paquete" role="tab" aria-controls="nav-paquete" aria-selected="false">Paquete</a>
 
                             <a class="nav-item nav-link" id="nav-destino-tab" data-toggle="tab" href="#nav-destino" role="tab" aria-controls="nav-destino" aria-selected="false">Destino</a>
@@ -80,62 +82,92 @@
 
                         <div class="tab-pane fade show active" id="nav-origen" role="tabpanel" aria-labelledby="nav-origen-tab">
                             <p></p>
-          
-                            <form class="container">
-                  
-                                <div class="form-group">
-                                    <label for="txtdistrito" class="col-sm-2 col-form-label">Distrito:</label>
-                                    <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito">
-                                </div>
 
-                                <div class="form-group">
-                                    <label for="txtdireccion" class="col-sm-2 col-form-label">Dirección:</label>
-                                    <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="direccion" name="txtdireccion" id="txtdireccion">
-                                </div>
+                            <div class="form-group">
+                                <label for="txtdistrito">Distrito:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito">
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="txtreferencia" class="col-sm-2 col-form-label">Referencia:</label>
-                                    <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="referencia" name="txtreferencia" id="txtreferencia">
-                                </div>
+                            <div class="form-group">
+                                <label for="txtdireccion">Dirección:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="direccion" name="txtdireccion" id="txtdireccion">
+                            </div>
 
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-primary col-sm-2" @click="obtenerCodigoTienda()">Traer codigo tienda</button>
-                                    <select id="cmbTiendas" class="form-control form-control-sm" v-model="selectedTienda">
-                                        <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.storeId}}</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="txtreferencia">Referencia:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="referencia" name="txtreferencia" id="txtreferencia">
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="cmbPaises" class="col-sm-2 col-form-label">Lista de Paises:</label>
-                                    <select id="cmbPaises" class="form-control form-control-sm" v-model="selectedPais">
-                                        <option v-for="pais in paises" v-bind:value="pais.country1">{{pais.country1}}</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary" @click="obtenerCodigoTienda()">Traer codigo tienda</button>
+                                <select id="cmbTiendas" class="form-control form-control-sm" v-model="selectedTienda">
+                                    <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.storeId}}</option>
+                                </select>
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="cmbModos" class="col-sm-2 col-form-label">Modo de envío:</label>
-                                    <select id="cmbModos" class="form-control form-control-sm" v-model="selectedModo">
-                                        <option v-for="mod in modosenvio" v-bind:value="mod.mode1">{{mod.mode1}}</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="cmbPaises">Lista de Paises:</label>
+                                <select id="cmbPaises" class="form-control form-control-sm" v-model="selectedPais">
+                                    <option v-for="pais in paises" v-bind:value="pais.country1">{{pais.country1}}</option>
+                                </select>
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="cmbTipoDocumento" class="col-sm-2 col-form-label">Tipo de Documento:</label>
-                                    <select id="cmbTipoDocumento" class="form-control form-control-sm" v-model="selectedTipoDocumento">
-                                        <option v-for="tipo in tipos" v-bind:value="tipo.documentType1">{{tipo.documentType1}}</option>
-                                    </select>
-                                </div>
+                            <button type="button" class="btn btn-primary" onclick="mostrarTab('datosenvio')">Siguiente</button>
 
-                                <button type="button" class="btn btn-primary" onclick="mostrarTab('paquete')">Siguiente</button>
+                        </div>
 
-                            </form>
+                        <div class="tab-pane fade" id="nav-datosenvio" role="tabpanel" aria-labelledby="nav-datosenvio-tab">
+
+                            <p></p>
+
+                            <div class="form-group">
+                                <label for="txtpersona">Persona o empresa:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="persona" name="txtpersona" id="txtpersona">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cmbTipoDocumento">Tipo de Documento:</label>
+                                <select id="cmbTipoDocumento" class="form-control form-control-sm" v-model="selectedTipoDocumento">
+                                    <option v-for="tipo in tipos" v-bind:value="tipo.documentType1">{{tipo.documentType1}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtNroDocumento">Nro documento:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="nrodocumento" name="txtNroDocumento" id="txtNroDocumento">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtTelefono">Teléfono:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="telefono" name="txtTelefono" id="txtTelefono">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cmbModos">Modo de envío:</label>
+                                <select id="cmbModos" class="form-control form-control-sm" v-model="selectedModo">
+                                    <option v-for="mod in modosenvio" v-bind:value="mod.mode1">{{mod.mode1}}</option>
+                                </select>
+                            </div>
+
+                            <button type="button" class="btn btn-primary" onclick="mostrarTab('paquete')">Siguiente</button>
 
                         </div>
 
                         <div class="tab-pane fade" id="nav-paquete" role="tabpanel" aria-labelledby="nav-paquete-tab">
 
-                            paquete
-                            </br>
+                            <p></p>
+
+                            
+
+                            <div class="form-group">
+                                <label for="cmbModos">Modo de envío:</label>
+                                <select id="cmbModos" class="form-control form-control-sm" v-model="selectedModo">
+                                    <option v-for="mod in modosenvio" v-bind:value="mod.mode1">{{mod.mode1}}</option>
+                                </select>
+                            </div>
+
+
+
                             <button type="button" class="btn btn-primary" onclick="mostrarTab('destino')">Siguiente</button>
 
                         </div>
@@ -195,7 +227,6 @@
             function mostrar() {
 
                 var distrito = document.getElementById("txtdistrito").value;
-
                 alert(distrito);
 
             }
@@ -229,7 +260,6 @@
                 methods: {
                     src: function () {
                         return this.url + "&origin=" + this.origin + "&destination=" + this.destination;
-
                     },
                     fecthModosEnvio: function () {
                         this.$http.get("http://localhost:49898/api/listarmodoenvio").then(function (response) {
