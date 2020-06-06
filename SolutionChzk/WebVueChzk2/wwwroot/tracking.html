@@ -1,0 +1,84 @@
+﻿<html>
+<head>
+	<title>Tracking</title>
+	<meta charset="utf-8">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+	
+<script type="text/javascript">
+	
+	
+    function mostrarTab(tabname) {
+        //prueba
+		//enableLink(getElementById('nav-paquete-tab'); 
+		//$('.nav-tabs a[href="#nav-'+tabname+'"]').setAttribute('classList', 'nav-item nav-link');
+		$('.nav-tabs a[href="#nav-'+tabname+'"]').tab('show');
+	}
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+<p></p>
+
+
+
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand" href="#">
+	<img src="https://ii.ct-stc.com/3/logos/empresas/2017/12/22/blue-express-E9AF1254F4EFE80B162438593thumbnail.png"  width="85" height="30"class="d-inline-block align-top" alt="">&nbsp;&nbsp;&nbsp;
+	Tracking
+  </a>
+  <form class="form-inline">
+    <span id="txtCorreo" name="txtCorreo">email@example.com</span>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <a href="principal.html">
+          Logout
+    </a>
+  </form>
+</nav>
+
+
+
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+  	
+    <a class="nav-item nav-link"  id="nav-origen-tab" data-toggle="tab" href="#nav-origen" role="tab" aria-controls="nav-origen" aria-selected="true" >Inicio</a>
+
+	<a class="nav-item nav-link" id="nav-paquete-tab" data-toggle="tab" href="#nav-paquete" role="tab" aria-controls="nav-paquete" aria-selected="false">Seguimiento</a>
+
+
+  </div>
+
+  
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-inicio" role="tabpanel" aria-labelledby="nav-inicio-tab">
+  	
+    codigo de seguimiento:
+
+  	</br>
+  	<button type="button" class="btn btn-primary" onclick="mostrarTab('seguimiento')" >Siguiente</button>
+
+  </div>
+
+  <div class="tab-pane fade" id="nav-seguimiento" role="tabpanel" aria-labelledby="nav-seguimiento-tab">
+
+  	seguimiento
+
+  </div>
+
+</div>
+
+</div>
+
+
+
+</body>
+
+</html>
