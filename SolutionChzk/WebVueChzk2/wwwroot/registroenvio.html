@@ -63,17 +63,15 @@
 
                             <a class="nav-item nav-link" id="nav-origen-tab" data-toggle="tab" href="#nav-origen" role="tab" aria-controls="nav-origen" aria-selected="true">Origen</a>
 
-                            <a class="nav-item nav-link" id="nav-datosenvio-tab" data-toggle="tab" href="#nav-datosenvio" role="tab" aria-controls="nav-datosenvio" aria-selected="false">Datos Envio</a>
+                            <a class="nav-item nav-link" id="nav-datosrecojo-tab" data-toggle="tab" href="#nav-datosrecojo" role="tab" aria-controls="nav-datosrecojo" aria-selected="false">Datos Recojo</a>
 
                             <a class="nav-item nav-link" id="nav-paquete-tab" data-toggle="tab" href="#nav-paquete" role="tab" aria-controls="nav-paquete" aria-selected="false">Paquete</a>
 
                             <a class="nav-item nav-link" id="nav-destino-tab" data-toggle="tab" href="#nav-destino" role="tab" aria-controls="nav-destino" aria-selected="false">Destino</a>
 
+                            <a class="nav-item nav-link" id="nav-datosentrega-tab" data-toggle="tab" href="#nav-datosentrega" role="tab" aria-controls="nav-datosentrega" aria-selected="false">Datos Entrega</a>
+
                             <a class="nav-item nav-link" id="nav-mediopago-tab" data-toggle="tab" href="#nav-mediopago" role="tab" aria-controls="nav-mediopago" aria-selected="false">Medio Pago</a>
-
-                            <a class="nav-item nav-link" id="nav-horariorecojo-tab" data-toggle="tab" href="#nav-horariorecojo" role="tab" aria-controls="nav-horariorecojo" aria-selected="false">Horario Recojo</a>
-
-                            <a class="nav-item nav-link" id="nav-comprobantepago-tab" data-toggle="tab" href="#nav-comprobantepago" role="tab" aria-controls="nav-comprobantepago" aria-selected="false">Comprobante Pago</a>
 
                         </div>
                     </nav>
@@ -112,42 +110,36 @@
                                 </select>
                             </div>
 
-                            <button type="button" class="btn btn-primary" onclick="mostrarTab('datosenvio')">Siguiente</button>
+                            <button type="button" class="btn btn-primary" onclick="mostrarTab('datosrecojo')">Siguiente</button>
 
                         </div>
 
-                        <div class="tab-pane fade" id="nav-datosenvio" role="tabpanel" aria-labelledby="nav-datosenvio-tab">
+                        <div class="tab-pane fade" id="nav-datosrecojo" role="tabpanel" aria-labelledby="nav-datosrecojo-tab">
 
                             <p></p>
 
                             <div class="form-group">
-                                <label for="txtpersona">Persona o empresa:</label>
-                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="persona" name="txtpersona" id="txtpersona">
+                                <label for="txtPersonaRecojo">Persona o empresa:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="personarecojo" name="txtPersonaRecojo" id="txtPersonaRecojo">
                             </div>
 
                             <div class="form-group">
-                                <label for="cmbTipoDocumento">Tipo de Documento:</label>
-                                <select id="cmbTipoDocumento" class="form-control form-control-sm" v-model="selectedTipoDocumento">
+                                <label for="cmbTipoDocumentoRecojo">Tipo de Documento:</label>
+                                <select id="cmbTipoDocumentoRecojo" class="form-control form-control-sm" v-model="selectedTipoDocumentoRecojo">
                                     <option v-for="tipo in tipos" v-bind:value="tipo.documentType1">{{tipo.documentType1}}</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="txtNroDocumento">Nro documento:</label>
-                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="nrodocumento" name="txtNroDocumento" id="txtNroDocumento">
+                                <label for="txtNroDocumentoRecojo">Nro documento:</label>
+                                <input type="text" class="form-control form-control-sm" pattern="[0-9]+" size="15" maxlength="30" v-model="nrodocumentorecojo" name="txtNroDocumentoRecojo" id="txtNroDocumentoRecojo">
                             </div>
 
                             <div class="form-group">
-                                <label for="txtTelefono">Teléfono:</label>
-                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="telefono" name="txtTelefono" id="txtTelefono">
+                                <label for="txtTelefonoRecojo">Teléfono:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="telefonorecojo" name="txtTelefonoRecojo" id="txtTelefonoRecojo">
                             </div>
 
-                            <div class="form-group">
-                                <label for="cmbModos">Modo de envío:</label>
-                                <select id="cmbModos" class="form-control form-control-sm" v-model="selectedModo">
-                                    <option v-for="mod in modosenvio" v-bind:value="mod.mode1">{{mod.mode1}}</option>
-                                </select>
-                            </div>
 
                             <button type="button" class="btn btn-primary" onclick="mostrarTab('paquete')">Siguiente</button>
 
@@ -157,7 +149,103 @@
 
                             <p></p>
 
-                            
+                            <div class="form-group">
+                                <label for="txtDesPaquete">Descripción:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="despaquete" name="txtDesPaquete" id="txtDesPaquete">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cmbTamanio">Tamaño del paquete:</label>
+                                <select id="cmbTamanio" class="form-control form-control-sm" v-model="selectedTamanio">
+                                    <option v-for="tamanio in tamanios" v-bind:value="tamanio.size">{{tamanio.size}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cmbMoneda">Moneda:</label>
+                                <select id="cmbMoneda" class="form-control form-control-sm" v-model="selectedMoneda">
+                                    <option v-for="moneda in monedas" v-bind:value="moneda.mode1">{{moneda.mode1}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtCosto">Costo:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="costo" name="txtCosto" id="txtCosto">
+                            </div>
+
+                            <button type="button" class="btn btn-primary" onclick="mostrarTab('destino')">Siguiente</button>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-destino" role="tabpanel" aria-labelledby="nav-destino-tab">
+
+                            <p></p>
+
+                            <div class="form-group">
+                                <label for="txtDistritoCliente">Distrito:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="distritocliente" name="txtDistritoCliente" id="txtDistritoCliente">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtDireccionCliente">Dirección:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="direccioncliente" name="txtDireccionCliente" id="txtDireccionCliente">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtReferenciaCliente">Referencia:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="referenciacliente" name="txtReferenciaCliente" id="txtReferenciaCliente">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtGeoposicion">Geoposición:</label>
+                                <div id="txtGeoposicion" class="row">
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="latitud" name="txtGeoposicion" id="txtLatitud">
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="longitud" name="txtGeoposicion" id="txtLongitud">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <button type="button" class="btn btn-primary" onclick="mostrarTab('datosentrega')">Siguiente</button>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-datosentrega" role="tabpanel" aria-labelledby="nav-datosentrega-tab">
+
+                            <p></p>
+
+                            <div class="form-group">
+                                <label for="txtPersonaEntrega">Persona o empresa:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="personaentrega" name="txtPersonaEntrega" id="txtPersonaEntrega">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cmbTipoDocumentoEntrega">Tipo de Documento:</label>
+                                <select id="cmbTipoDocumentoEntrega" class="form-control form-control-sm" v-model="selectedTipoDocumentoEntrega">
+                                    <option v-for="tipo in tipos" v-bind:value="tipo.documentType1">{{tipo.documentType1}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtNroDocumentoEntrega">Nro documento:</label>
+                                <input type="text" class="form-control form-control-sm" pattern="[0-9]" size="15" maxlength="30" v-model="nrodocumentoentrega" name="txtNroDocumentoEntrega" id="txtNroDocumentoEntrega">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtTelefonoEntrega">Teléfono:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="telefonoentrega" name="txtTelefonoEntrega" id="txtTelefonoEntrega">
+                            </div>
+
+
+                            <button type="button" class="btn btn-primary" onclick="mostrarTab('mediopago')">Siguiente</button>
+
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-mediopago" role="tabpanel" aria-labelledby="nav-mediopago-tab">
+                            <p></p>
 
                             <div class="form-group">
                                 <label for="cmbModos">Modo de envío:</label>
@@ -166,43 +254,29 @@
                                 </select>
                             </div>
 
+                            <div class="form-group">
+                                <label for="txtCostoTotal">Costo Total:</label>
+                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
+                            </div>
 
+                            <div class="form-group">
+                                <label for="cmbMedioPago">Medio de Pago:</label>
+                                <select id="cmbMedioPago" class="form-control form-control-sm" v-model="selectedMedioPago">
+                                    <option v-for="medio in mediospago" v-bind:value="medio.paymentMethod1">{{medio.paymentMethod1}}</option>
+                                </select>
+                            </div>
 
-                            <button type="button" class="btn btn-primary" onclick="mostrarTab('destino')">Siguiente</button>
+                            <div class="form-group">
+                                <label for="cmbComprobantePago">Comprobante de Pago:</label>
+                                <select id="cmbComprobantePago" class="form-control form-control-sm" v-model="selectedComprobantePago">
+                                    <option v-for="comprobante in comprobantes" v-bind:value="comprobante.proofPayment1">{{comprobante.proofPayment1}}</option>
+                                </select>
+                            </div>
 
-                        </div>
-
-                        <div class="tab-pane fade" id="nav-destino" role="tabpanel" aria-labelledby="nav-destino-tab">
-
-                            destino
-                            </br>
-                            <button type="button" class="btn btn-primary" onclick="mostrarTab('mediopago')">Siguiente</button>
-
-                        </div>
-
-                        <div class="tab-pane fade" id="nav-mediopago" role="tabpanel" aria-labelledby="nav-mediopago-tab">
-
-                            mediopago
-                            </br>
-                            <button type="button" class="btn btn-primary" onclick="mostrarTab('horariorecojo')">Siguiente</button>
-
-                        </div>
-
-                        <div class="tab-pane fade" id="nav-horariorecojo" role="tabpanel" aria-labelledby="nav-horariorecojo-tab">
-
-                            horariorecojo
-                            </br>
-                            <button type="button" class="btn btn-primary" onclick="mostrarTab('comprobantepago')">comprobantepago</button>
+                            <button type="button" class="btn btn-danger" onclick="alert('llamar a la API de Registro')">Enviar</button>
 
                         </div>
-
-                        <div class="tab-pane fade" id="nav-comprobantepago" role="tabpanel" aria-labelledby="nav-comprobantepago-tab">
-
-                            comprobantepago
-                            </br>
-                            <button type="button" class="btn btn-primary" onclick="alert('llamar a la api de registro')">enviar</button>
-
-                        </div>
+                                                
                     </div>
 
                 </div>
