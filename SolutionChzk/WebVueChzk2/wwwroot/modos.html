@@ -53,28 +53,6 @@
             //return selected;
         }
 
-        new Vue({
-            el: '#app1',
-            data: {
-                //nombre: "Juan",
-                //cursoid: 1,
-                //nota: [],
-                paises: []
-            },
-            mounted: function () {
-                this.fecthPaises();
-            },
-            methods: {
-                fecthPaises: function () {
-                    this.$http.get("http://localhost:49898/api/listarpaises").then(function (response) {
-                        this.paises = response.body;
-                    });
-                }
-
-            }
-        });
-
-
 
         new Vue({
 
@@ -83,15 +61,22 @@
                 //nombre: "Juan",
                 //cursoid: 1,
                 //nota: [],
-                modosenvio: []
+                modosenvio: [],
+                paises: []
             },
             mounted: function () {
                 this.fecthModosEnvio();
+                this.fecthPaises();
             },
             methods: {
                 fecthModosEnvio: function () {
                     this.$http.get("http://localhost:49898/api/listarmodoenvio").then(function (response) {
                         this.modosenvio = response.body;
+                    });
+                },
+                fecthPaises: function () {
+                    this.$http.get("http://localhost:49898/api/listarpaises").then(function (response) {
+                        this.paises = response.body;
                     });
                 }
                
