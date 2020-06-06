@@ -201,13 +201,60 @@
 
               </div>
 
-  <div class="tab-pane fade" id="nav-paquete" role="tabpanel" aria-labelledby="nav-paquete-tab">
+    <div class="tab-pane fade" id="nav-paquete" role="tabpanel" aria-labelledby="nav-paquete-tab">
 
-  	paquete
-  	</br>
-  	<button type="button" class="btn btn-primary" onclick="mostrarTab('destino')" >Siguiente</button>
+        <div id="app">
+            <form class="container">
 
-  </div>
+                <div class="form-group">
+                    <label for="txtdescripcionProducto" class="col-sm-2 col-form-label">Describe lo que llevamos:</label>
+                    <input type="text" size="15" maxlength="30" v-model="distrito" name="txtdescripcionProducto" id="txtdescripcionProducto">
+                </div>
+                <div class="form-group">
+                    <label for="cmbPaises" class="col-sm-2 col-form-label">Tamaño del Producto:</label>
+                    <select id="cmbPaises" v-model="selectedPais">
+                        <option v-for="pais in paises" v-bind:value="pais.country1">{{pais.country1}}</option>
+                    </select><br />
+                </div>
+                <div class="form-group">
+                    <label for="txtdescripcionProducto" class="col-sm-2 col-form-label">¿Cuál es el valor referencial de lo que llevamos?:</label>
+                    <input type="text" size="15" maxlength="30" v-model="distrito" name="txtdescripcionProducto" id="txtdescripcionProducto">
+                </div>
+                <div class="form-group">
+                    <label for="cmbTipoDocumento" class="col-sm-2 col-form-label">Tipo de Documento:</label>
+                    <select id="cmbTipoDocumento" v-model="selectedTipoDocumento">
+                        <option v-for="tipo in tipos" v-bind:value="tipo.documentType1">{{tipo.documentType1}}</option>
+                    </select><br />
+                </div>
+
+                <div class="form-group">
+                    <button onclick="input_tienda()">Click me</button>
+                </div>
+
+            </form>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </br>
+        <button type="button" class="btn btn-primary" onclick="mostrarTab('destino')">Siguiente</button>
+
+    </div>
 
   <div class="tab-pane fade" id="nav-destino" role="tabpanel" aria-labelledby="nav-destino-tab">
   	
