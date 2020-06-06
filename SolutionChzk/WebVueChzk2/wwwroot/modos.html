@@ -14,25 +14,36 @@
     <div id="app">
         <div class="container">
             <label for="txtdistrito">Distrito:</label>
-            <input type="text" size="15" maxlength="30" value=" " name="txtdistrito"><br />
+            <input type="text" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito"><br />
+            
             <label for="txtdireccion">Dirección:</label>
-            <input type="text" size="15" maxlength="30" value=" " name="txtdireccion"><br />
+            <input type="text" size="15" maxlength="30" v-model="direccion" name="txtdireccion" id="txtdireccion"><br />
+            
             <label for="txtreferencia">Referencia:</label>
-            <input type="text" size="15" maxlength="30" value=" " name="txtreferencia"><br />
-
+            <input type="text" size="15" maxlength="30" v-model="referencia" name="txtreferencia" id="txtreferencia"><br />
+            
+            <button type="button" class="btn btn-primary" @click="obtenerCodigoTienda()">Traer codigo tienda</button><br />
+            <label for="txttienda">Tienda:</label>
+            <select id="cmbTiendas" v-model="selectedTienda">
+                <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.storeId}}</option>
+            </select><br />
+            
             <label for="cmbPaises">Lista de Paises:</label>
-            <select id="cmbPaises">
-                <option v-for="pais in paises" value="{{pais.country1}}">{{pais.country1}}</option>
-            </select>
-            <br />
+            <select id="cmbPaises" v-model="selectedPais">
+                <option v-for="pais in paises" v-bind:value="pais.country1">{{pais.country1}}</option>
+            </select><br />
+            
             <label for="cmbModos">Modo de envío:</label>
-            <select id="cmbModos">
-                <option v-for="modo in modosenvio" value="{{modo.mode1}}">{{modo.mode1}}</option>
-            </select>
+            <select id="cmbModos" v-model="selectedModoEnvio">
+                <option v-for="modo in modosenvio" v-bind:value="modo.mode1">{{modo.mode1}}</option>
+            </select><br />
 
+            <label for="cmbTipoDocumento">Tipo de Documento:</label>
+            <select id="cmbTipoDocumento" v-model="selectedTipoDocumento">
+                <option v-for="tipo in tipos" v-bind:value="tipo.documentType1">{{tipo.documentType1}}</option>
+            </select><br />
 
-
-            <button onclick="mostrar()">Click me</button>
+            <button onclick="input_tienda()">Click me</button>
 
         </div>
 
@@ -44,13 +55,20 @@
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
     <script>
 
+        function input_tienda() {
+            var input = "obtenerCodigoTienda('";
+            input += document.getElementById('txtdistrito').value + "','" + document.getElementById('txtdireccion').value + "','" + document.getElementById('txtreferencia').value;
+            input += "')";
+            alert(input);
+            //return input;
+        }
+
         function mostrar() {
             
+            var distrito = document.getElementById("txtdistrito").value;
+            
+            alert(distrito);
 
-            var combo = document.getElementById("cmbModos");
-            var selected = combo.options[combo.selectedIndex].text;
-            alert(selected);
-            //return selected;
         }
 
 
@@ -58,15 +76,23 @@
 
             el: '#app',
             data: {
-                //nombre: "Juan",
-                //cursoid: 1,
-                //nota: [],
+                distrito: "",
+                direccion: "",
+                referencia: "",
                 modosenvio: [],
-                paises: []
+                selectedModoEnvio,
+                paises: [],
+                selectedPais,
+                tiendas: [],
+                selectedTienda,
+                contactoRecojo: "",
+                tipos: [],
+                selectedTipoDocumento
             },
             mounted: function () {
                 this.fecthModosEnvio();
                 this.fecthPaises();
+                this.obtenerTiposDocumento();
             },
             methods: {
                 fecthModosEnvio: function () {
@@ -78,7 +104,18 @@
                     this.$http.get("http://localhost:49898/api/listarpaises").then(function (response) {
                         this.paises = response.body;
                     });
+                },
+                obtenerCodigoTienda: function () {
+                    this.$http.get("http://localhost:49898/api/listartiendas?distrito=" + this.distrito + "&direccion=" + this.direccion + "&referencia=" + this.referencia).then(function (response) {
+                    this.tiendas = response.body;
+                    });
+                },
+                obtenerTiposDocumento: function () {
+                    this.$http.get("http://localhost:49898/api/listartipodocumento").then(function (response) {
+                        this.tipos = response.body;
+                    });
                 }
+                
                
             }
         });
