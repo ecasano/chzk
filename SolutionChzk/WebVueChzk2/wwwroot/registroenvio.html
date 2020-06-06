@@ -43,16 +43,17 @@
 
             <div class="row">
                 <div class="col-sm">
-                    <div class="form-group row">
-                        <label for="txtdireccion" class="col-sm-2 col-form-label">Origen:</label>
-                        <input type="text" class="form-control form-control-sm" v-model="origin">
-                    </div>
-                    <div class="form-group row">
-                        <label for="txtdireccion" class="col-sm-2 col-form-label">Destino:</label>
-                        <input type="text" class="form-control form-control-sm" v-model="destination">
-                    </div>
-                    <iframe width="100%" height="500px" v-bind:src="src()"></iframe>
-
+                    
+                        <form class="form-inline">
+                            <label for="txtdireccion" class="col-sm-2 col-form-label">Origen:</label>
+                            <input type="text" class="form-control mr-sm-2" v-model="origin">
+                        </form>
+                        <form class="form-inline">
+                            <label for="txtdireccion" class="col-sm-2 col-form-label">Destino:</label>
+                            <input type="text" class="form-control mr-sm-2" v-model="destination">
+                        </form>
+                        <iframe width="100%" height="500px" v-bind:src="src()"></iframe>
+                    
                 </div>
 
                 <div class="col-sm">
@@ -75,58 +76,59 @@
                         </div>
                     </nav>
 
-<div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-origen" role="tabpanel" aria-labelledby="nav-origen-tab">
-        <p></p>
-          <div id="app">
-              <form class="container">
+                    <div class="tab-content" id="nav-tabContent">
+
+                        <div class="tab-pane fade show active" id="nav-origen" role="tabpanel" aria-labelledby="nav-origen-tab">
+                            <p></p>
+          
+                            <form class="container">
                   
-                      <div class="form-group">
-                          <label for="txtdistrito" class="col-sm-2 col-form-label">Distrito:</label>
-                          <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito">
-                      </div>
+                                <div class="form-group">
+                                    <label for="txtdistrito" class="col-sm-2 col-form-label">Distrito:</label>
+                                    <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito">
+                                </div>
 
-                                <div class="form-group row">
+                                <div class="form-group">
                                     <label for="txtdireccion" class="col-sm-2 col-form-label">Dirección:</label>
-                                    <input type="text" size="15" maxlength="30" v-model="direccion" name="txtdireccion" id="txtdireccion"><br />
+                                    <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="direccion" name="txtdireccion" id="txtdireccion">
                                 </div>
 
-                                <div class="form-group row">
+                                <div class="form-group">
                                     <label for="txtreferencia" class="col-sm-2 col-form-label">Referencia:</label>
-                                    <input type="text" size="15" maxlength="30" v-model="referencia" name="txtreferencia" id="txtreferencia">
+                                    <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="referencia" name="txtreferencia" id="txtreferencia">
                                 </div>
 
-                                <div class="form-group row">
+                                <div class="form-group">
                                     <button type="button" class="btn btn-primary col-sm-2" @click="obtenerCodigoTienda()">Traer codigo tienda</button>
-                                    <select id="cmbTiendas" v-model="selectedTienda">
+                                    <select id="cmbTiendas" class="form-control form-control-sm" v-model="selectedTienda">
                                         <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.storeId}}</option>
-                                    </select><br />
+                                    </select>
                                 </div>
 
-                                <div class="form-group row">
+                                <div class="form-group">
                                     <label for="cmbPaises" class="col-sm-2 col-form-label">Lista de Paises:</label>
-                                    <select id="cmbPaises" v-model="selectedPais">
+                                    <select id="cmbPaises" class="form-control form-control-sm" v-model="selectedPais">
                                         <option v-for="pais in paises" v-bind:value="pais.country1">{{pais.country1}}</option>
-                                    </select><br />
+                                    </select>
                                 </div>
 
-                                <div class="form-group row">
+                                <div class="form-group">
                                     <label for="cmbModos" class="col-sm-2 col-form-label">Modo de envío:</label>
-                                    <select id="cmbModos" v-model="selectedModo">
+                                    <select id="cmbModos" class="form-control form-control-sm" v-model="selectedModo">
                                         <option v-for="mod in modosenvio" v-bind:value="mod.mode1">{{mod.mode1}}</option>
-                                    </select><br />
+                                    </select>
                                 </div>
 
-                                <div class="form-group row">
+                                <div class="form-group">
                                     <label for="cmbTipoDocumento" class="col-sm-2 col-form-label">Tipo de Documento:</label>
-                                    <select id="cmbTipoDocumento" v-model="selectedTipoDocumento">
+                                    <select id="cmbTipoDocumento" class="form-control form-control-sm" v-model="selectedTipoDocumento">
                                         <option v-for="tipo in tipos" v-bind:value="tipo.documentType1">{{tipo.documentType1}}</option>
-                                    </select><br />
+                                    </select>
                                 </div>
+
+                                <button type="button" class="btn btn-primary" onclick="mostrarTab('paquete')">Siguiente</button>
 
                             </form>
-
-
 
                         </div>
 
@@ -171,19 +173,11 @@
                         </div>
                     </div>
 
-
-
                 </div>
 
             </div>
 
-            
-
-
-
         </div>
-
-    </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
@@ -268,53 +262,8 @@
         </script>
 
 
-                      </br>
-                      <button type="button" class="btn btn-primary" onclick="mostrarTab('paquete')">Siguiente</button>
-
-              </div>
-
-  <div class="tab-pane fade" id="nav-paquete" role="tabpanel" aria-labelledby="nav-paquete-tab">
-
-  	paquete
-  	</br>
-  	<button type="button" class="btn btn-primary" onclick="mostrarTab('destino')" >Siguiente</button>
-
-  </div>
-
-  <div class="tab-pane fade" id="nav-destino" role="tabpanel" aria-labelledby="nav-destino-tab">
-  	
-  	destino
-  	</br>
-  	<button type="button" class="btn btn-primary" onclick="mostrarTab('mediopago')" >Siguiente</button>
-
-  </div>
-
-  <div class="tab-pane fade" id="nav-mediopago" role="tabpanel" aria-labelledby="nav-mediopago-tab">
-  	
-  	mediopago
-  	</br>
-  	<button type="button" class="btn btn-primary" onclick="mostrarTab('horariorecojo')" >Siguiente</button>
-
-  </div>
-
-  <div class="tab-pane fade" id="nav-horariorecojo" role="tabpanel" aria-labelledby="nav-horariorecojo-tab">
-  	
-  	horariorecojo
-  	</br>
-  	<button type="button" class="btn btn-primary" onclick="mostrarTab('comprobantepago')" >comprobantepago</button>
-
-  </div>
-
-  <div class="tab-pane fade" id="nav-comprobantepago" role="tabpanel" aria-labelledby="nav-comprobantepago-tab">
-  	
-  	comprobantepago
-  	</br>
-  	<button type="button" class="btn btn-primary" onclick="alert('llamar a la api de registro')" >enviar</button>
-
-  </div>
-</div>
-
-</div>
+                      
+                   
 
 
 
