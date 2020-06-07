@@ -16,8 +16,8 @@ namespace WebApiChzk1.Models
                        select new Storedt()
                        {
                            storeId = b.storeId,
-                           district = b.district
-
+                           district = b.district,
+                           reference = b.reference
                        };
             return list;
         }

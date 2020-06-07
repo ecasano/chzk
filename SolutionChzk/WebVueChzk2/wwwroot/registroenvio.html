@@ -76,12 +76,13 @@
 
                     <form class="form-inline">
                         <label for="txtdireccion" class="col-sm-2 col-form-label">Origen:</label>
-                        <input type="text" class="form-control mr-sm-2" v-model="origin">
+                        <input type="text" class="form-control mr-sm-2" v-model.lazy="origin">
                     </form>
                     <form class="form-inline">
                         <label for="txtdireccion" class="col-sm-2 col-form-label">Destino:</label>
-                        <input type="text" class="form-control mr-sm-2" v-model="destination">
+                        <input type="text" class="form-control mr-sm-2" v-model.lazy="destination">
                     </form>
+
                     <iframe width="100%" height="500px" v-bind:src="src()"></iframe>
 
                 </div>
@@ -419,7 +420,8 @@
 
                 el: '#app',
                 data: {
-                    distrito: "",
+                    distrito: 'jesus maria',
+                    distritocliente: 'cercado de lima',
                     direccion: "",
                     referencia: "",
                     modosenvio: [],
@@ -514,7 +516,7 @@
 
         </script>
 
-
+    </div>
 
 
 
