@@ -38,7 +38,7 @@ namespace WebApiChzk1.Models
         {
             chzkEntities db = new chzkEntities();
 
-            var list = from b in db.Store.Where(t => t.district == distrito || t.address == direccion || t.reference == referencia || t.country == pais)
+            var list = from b in db.Store.Where(t => t.district == distrito && t.address == direccion && t.reference == referencia && t.country == pais)
                             select new Storedt()
                                               {
                                                   storeId = b.storeId,
