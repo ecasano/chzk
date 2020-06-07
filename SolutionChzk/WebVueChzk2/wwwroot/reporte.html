@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Reporte de Envío</title>
+    <meta charset="utf-8">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+        var queryString = new Array();
+
+        window.onload = function () {
+            if (queryString.length == 0) {
+                if (window.location.search.split('?').length > 1) {
+                    var params = window.location.search.split('?')[1].split('&');
+                    for (var i = 0; i < params.length; i++) {
+                        var key = params[i].split('=')[0];
+                        var value = decodeURIComponent(params[i].split('=')[1]);
+                        queryString[key] = value;
+                    }
+                }
+            }
+            if (queryString["correo"] != null) {
+                var data = queryString["correo"];
+                document.getElementById("txtCorreo").innerHTML = data;
+            }
+        };
+
+        function mostrarTab(tabname) {
+
+            $('.nav-tabs a[href="#nav-' + tabname + '"]').tab('show');
+        }
+
+    </script>
+
+    <script>
+
+        new Vue({
+            el: '...',
+            data: {
+                selectedModo: ''
+            }
+        })
+
+    </script>
+
+
+</head>
+<body>
+    <div id="app">
+
+
+        <nav class="navbar navbar-light bg-light justify-content-between">
+            <a class="navbar-brand" href="#">
+                <img src="https://ii.ct-stc.com/3/logos/empresas/2017/12/22/blue-express-E9AF1254F4EFE80B162438593thumbnail.png" width="85" height="30" class="d-inline-block align-top" alt="">&nbsp;&nbsp;&nbsp;
+                Reporte de Envío
+            </a>
+            <form class="form-inline">
+                <span id="txtCorreo" name="txtCorreo">email@example.com</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <a href="principal.html">
+                    Logout
+                </a>
+            </form>
+        </nav>
+
+
+
+        <div class="container">
+
+
+            <div class="form-group">
+                <label for="txtdistrito">Codigo de Delivery:</label>
+                <input type="text" class="form-control form-control-sm" placeholder="Introduzca el distrito" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito" required>
+            </div>
+
+            <div class="form-group">
+                <label for="txtdireccion">Tienda:</label>
+                <input type="text" class="form-control form-control-sm" placeholder="Introduzca la dirección" size="15" maxlength="30" v-model="direccion" name="txtdireccion" id="txtdireccion">
+            </div>
+
+
+            <div class="form-group">
+
+                <button type="button" class="btn btn-sm btn-outline-secondary" @click="obtenerCodigoTienda()">Reporte Delivery</button>
+
+                <button type="button" class="btn btn-sm btn-outline-secondary" @click="ValidarTienda()">Reporte por tienda</button>
+
+                <select id="cmbTiendas" class="form-control form-control-sm" v-model="selectedTienda">
+                    <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.reference}}</option>
+                </select>
+            </div>
+
+
+
+
+
+        </div>
+
+    
+
+
+
+
+    </div>
+</body>
+<script type="text/javascript">
+    var vue_app = new Vue({
+        el: '#app',
+        data: {
+            origin: 'jesus maria',
+            destination: 'cercado de lima',
+            url: "https://www.google.com/maps/embed/v1/directions?key=AIzaSyB7uYHbgeB8gEPnrEGOlCsxubBDXowPM_w"
+        },
+        methods: {
+            src: function () {
+                return this.url + "&origin=" + this.origin + "&destination=" + this.destination;
+
+            }
+
+        }
+
+
+
+    });
+</script>
+</html>
