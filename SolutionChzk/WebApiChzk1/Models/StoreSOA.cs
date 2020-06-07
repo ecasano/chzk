@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WebApiChzk1.Transfer;
@@ -43,6 +44,31 @@ namespace WebApiChzk1.Models
                            
                        };
             return list;
+        }
+
+        public static void ValidarTienda(string distrito_n, string direccion_n, string referencia_n)
+        {
+            chzkEntities db = new chzkEntities();
+            var otienda = db.Store.First(t => t.district == distrito_n && t.address == direccion_n && t.reference == referencia_n);
+            if (otienda == null)
+            {
+                Store ntienda = new Store()
+                {
+                    district = distrito_n,
+                    address = direccion_n,
+                    reference = referencia_n,
+                   
+                   
+                };
+                db.Store.Add(ntienda);
+                db.SaveChanges();
+            }
+            else
+            {
+                           
+                //db.Entry(otienda).State = EntityState.Modified;
+               // db.SaveChanges();
+            }
         }
 
 

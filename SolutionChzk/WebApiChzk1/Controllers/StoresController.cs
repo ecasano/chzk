@@ -63,6 +63,16 @@ namespace WebApiChzk1.Controllers
             return Ok(store);
         }
 
+
+        // PUT: api/ValidarTienda
+        [HttpPut]
+        [Route("api/ValidarTienda")]
+        public void PutValidar(string distrito_n, string direccion_n, string referencia_n)
+        {
+            Store.ValidarTienda(distrito_n, direccion_n, referencia_n);
+        }
+
+
         // PUT: api/Stores/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutStore(int id, Store store)
