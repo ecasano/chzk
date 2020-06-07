@@ -290,7 +290,7 @@
                             <div class="form-group">
                                 <label for="cmbModos">Modo de envío:</label>
                                 <select id="cmbModos" class="form-control form-control-sm" v-model="selectedModo">
-                                    <!--<option disabled selected>Selecciona una opción</option>-->
+                                    <option disabled selected>Seleccione una opción</option>
                                     <option v-for="mod in modosenvio" v-bind:value="mod.mode1">{{mod.mode1}}</option>
                                 </select>
                                 <!--<span v-if="selectedModo === 'EXPRESS'">aaa</span>-->
@@ -400,7 +400,7 @@
                     direccion: "",
                     referencia: "",
                     modosenvio: [],
-                    selectedModo: 'EXPRESS',
+                    selectedModo: 'Seleccione una opción',
                     paises: [],
                     selectedPais: "PE",
                     tiendas: [],
