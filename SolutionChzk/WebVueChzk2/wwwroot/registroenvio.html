@@ -1,22 +1,40 @@
-﻿    <html>
+﻿<html>
 <head>
-	<title>Registro de Envío</title>
-	<meta charset="utf-8">
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Registro de Envío</title>
+    <meta charset="utf-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
-	
-<script type="text/javascript">
-	
-	
-    function mostrarTab(tabname) {
-        
-		$('.nav-tabs a[href="#nav-'+tabname+'"]').tab('show');
-	}
-	
-</script>
+
+    <script type="text/javascript">
+
+        var queryString = new Array();
+
+        window.onload = function () {
+            if (queryString.length == 0) {
+                if (window.location.search.split('?').length > 1) {
+                    var params = window.location.search.split('?')[1].split('&');
+                    for (var i = 0; i < params.length; i++) {
+                        var key = params[i].split('=')[0];
+                        var value = decodeURIComponent(params[i].split('=')[1]);
+                        queryString[key] = value;
+                    }
+                }
+            }
+            if (queryString["correo"] != null) {
+                var data = queryString["correo"];
+                document.getElementById("txtCorreo").innerHTML = data;
+            }
+        };
+
+        function mostrarTab(tabname) {
+
+            $('.nav-tabs a[href="#nav-' + tabname + '"]').tab('show');
+        }
+
+    </script>
 
 </head>
 
@@ -43,17 +61,17 @@
 
             <div class="row">
                 <div class="col-sm">
-                    
-                        <form class="form-inline">
-                            <label for="txtdireccion" class="col-sm-2 col-form-label">Origen:</label>
-                            <input type="text" class="form-control mr-sm-2" v-model="origin">
-                        </form>
-                        <form class="form-inline">
-                            <label for="txtdireccion" class="col-sm-2 col-form-label">Destino:</label>
-                            <input type="text" class="form-control mr-sm-2" v-model="destination">
-                        </form>
-                        <iframe width="100%" height="500px" v-bind:src="src()"></iframe>
-                    
+
+                    <form class="form-inline">
+                        <label for="txtdireccion" class="col-sm-2 col-form-label">Origen:</label>
+                        <input type="text" class="form-control mr-sm-2" v-model="origin">
+                    </form>
+                    <form class="form-inline">
+                        <label for="txtdireccion" class="col-sm-2 col-form-label">Destino:</label>
+                        <input type="text" class="form-control mr-sm-2" v-model="destination">
+                    </form>
+                    <iframe width="100%" height="500px" v-bind:src="src()"></iframe>
+
                 </div>
 
                 <div class="col-sm">
@@ -82,6 +100,13 @@
                             <p></p>
 
                             <div class="form-group">
+                                <label for="cmbPaises">Lista de Paises:</label>
+                                <select id="cmbPaises" class="form-control form-control-sm" v-model="selectedPais">
+                                    <option v-for="pais in paises" v-bind:value="pais.country1">{{pais.country1}}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="txtdistrito">Distrito:</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Introduzca el distrito" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito">
                             </div>
@@ -99,16 +124,11 @@
                             <div class="form-group">
                                 <button type="button" class="btn btn-sm btn-outline-secondary" @click="obtenerCodigoTienda()">Traer codigo tienda</button>
                                 <select id="cmbTiendas" class="form-control form-control-sm" v-model="selectedTienda">
-                                    <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.storeId}}</option>
+                                    <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.reference}}</option>
                                 </select>
                             </div>
 
-                            <div class="form-group">
-                                <label for="cmbPaises">Lista de Paises:</label>
-                                <select id="cmbPaises" class="form-control form-control-sm" v-model="selectedPais">
-                                    <option v-for="pais in paises" v-bind:value="pais.country1">{{pais.country1}}</option>
-                                </select>
-                            </div>
+
 
                             <button type="button" class="btn btn-primary" onclick="mostrarTab('datosrecojo')">Siguiente</button>
 
@@ -137,7 +157,7 @@
                                     Debes introducir un email válido
                                 </div>
                             </div>
-                          
+
 
                             <div class="form-group">
                                 <label for="txtTelefonoRecojo">Teléfono:</label>
@@ -280,7 +300,7 @@
                             <button type="button" class="btn btn-danger" onclick="alert('llamar a la API de Registro')">Enviar</button>
 
                         </div>
-                                                
+
                     </div>
 
                 </div>
@@ -362,7 +382,7 @@
                         });
                     },
                     obtenerCodigoTienda: function () {
-                        this.$http.get("http://localhost:49898/api/listartiendas?distrito=" + this.distrito + "&direccion=" + this.direccion + "&referencia=" + this.referencia).then(function (response) {
+                        this.$http.get("http://localhost:49898/api/listartiendas?distrito=" + this.distrito + "&direccion=" + this.direccion + "&referencia=" + this.referencia + "&pais=" + this.selectedPais).then(function (response) {
                             this.tiendas = response.body;
                         });
                     },
@@ -400,8 +420,8 @@
         </script>
 
 
-                      
-                   
+
+
 
 
 
