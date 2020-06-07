@@ -129,6 +129,8 @@ namespace WebApiChzk1.Models
                 };
                 db.Store.Add(ntienda);
                 db.SaveChanges();
+
+               
             }
             else
             {

@@ -8,9 +8,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
-
     <script type="text/javascript">
 
         var queryString = new Array();
@@ -139,11 +136,12 @@
                             <div class="form-group">
                                 <button type="button" class="btn btn-sm btn-outline-secondary" @click="obtenerCodigoTienda()">Validar Tienda</button>
                                 <button type="button" class="btn btn-sm btn-outline-secondary" @click="ValidarTienda()">Agregar Tienda</button>
+
                                 <select id="cmbTiendas" class="form-control form-control-sm" v-model="selectedTienda">
                                     <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.reference}}</option>
                                 </select>
                             </div>
-
+                            
 
 
                             <button type="button" class="btn btn-primary" onclick="mostrarTab('datosrecojo')">Siguiente</button>
@@ -446,6 +444,7 @@
                         });
                     },
                     obtenerCodigoTienda: function () {
+                        
                         this.$http.get("http://localhost:49898/api/listartiendas?distrito=" + this.distrito + "&direccion=" + this.direccion + "&referencia=" + this.referencia + "&pais=" + this.selectedPais).then(function (response) {
                             this.tiendas = response.body;
                         });
@@ -476,8 +475,10 @@
                         });
                     },
                     ValidarTienda: function () {
+                        
                         this.$http.put("http://localhost:49898/api/ValidarTienda?distrito=" + this.distrito + "&direccion=" + this.direccion + "&referencia=" + this.referencia + "&pais=" + this.selectedPais).then(function (response) {
                             this.tiendas = response.body;
+                            
                         });
                     }
                 }
