@@ -41,7 +41,7 @@ namespace WebApiChzk1.Controllers
         [Route("api/listartiendas")]
         public IEnumerable<Storedt> GetListarTiendas(string distrito, string direccion, string referencia, string pais)
         {
-            Store.ValidarTienda(distrito, direccion, referencia, pais);
+            
             return Store.ListarTiendas(distrito, direccion, referencia, pais);
         }
 
@@ -68,9 +68,9 @@ namespace WebApiChzk1.Controllers
         // PUT: api/ValidarTienda
         [HttpPut]
         [Route("api/ValidarTienda")]
-        public void PutValidar(string distrito_n, string direccion_n, string referencia_n, string pais_n)
+        public void PutValidar(string distrito, string direccion, string referencia, string pais)
         {
-            Store.ValidarTienda(distrito_n, direccion_n, referencia_n, pais_n);
+            Store.ValidarTienda(distrito, direccion, referencia, pais);
         }
 
 
