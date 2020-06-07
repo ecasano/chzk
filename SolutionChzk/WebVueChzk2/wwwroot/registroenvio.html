@@ -36,6 +36,18 @@
 
     </script>
 
+<script>
+
+    new Vue({
+        el: '...',
+        data: {
+            selectedModo: ''
+        }
+    })
+    
+</script>
+
+
 </head>
 
 <body>
@@ -260,7 +272,8 @@
 
                             <div class="form-group">
                                 <label for="txtTelefonoEntrega">Teléfono:</label>
-                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="telefonoentrega" name="txtTelefonoEntrega" id="txtTelefonoEntrega">
+                                <input type="text" pattern="[0-9]" class="form-control form-control-sm" size="15" maxlength="10" v-model="telefonoentrega" name="txtTelefonoEntrega" id="txtTelefonoEntrega">
+                                <!--<input type="number" name="txtTelefonoEntrega" id="txtTelefonoEntrega" v-model="telefonoentrega" min="0" size="15" maxlength="15">-->
                             </div>
 
 
@@ -274,13 +287,59 @@
                             <div class="form-group">
                                 <label for="cmbModos">Modo de envío:</label>
                                 <select id="cmbModos" class="form-control form-control-sm" v-model="selectedModo">
+                                    <!--<option disabled selected>Selecciona una opción</option>-->
                                     <option v-for="mod in modosenvio" v-bind:value="mod.mode1">{{mod.mode1}}</option>
                                 </select>
-                            </div>
+                                <!--<span v-if="selectedModo === 'EXPRESS'">aaa</span>-->
 
-                            <div class="form-group">
-                                <label for="txtCostoTotal">Costo Total:</label>
-                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
+                                <template v-if="selectedModo === 'EXPRESS'">
+                                    <label for="txtHorarioEntrega">Horario de Entrega:</label>
+                                    <input disabled type="text" placeholder="El pedido será enviado el mismo día" class="form-control form-control-sm" size="15" maxlength="30" v-model="horarioentrega" name="txthorarioentrega" id="txthorarioentrega">
+
+                                    <label for="txtCostoTotal">Costo Total:</label>
+                                    <input disabled type="text" placeholder="S/. 30.00" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
+                                </template>
+
+                                <!-- <template v-else-if="selectedModo === 'PROGRAMADO'">
+                                    <label for="txtHorarioEntrega">Horario de Entrega:</label>
+                                    <input disabled type="text" placeholder="El pedido sera enviado al dia siguiente el horario se debe especificar en time" class="form-control form-control-sm" size="15" maxlength="30" v-model="horarioentrega" name="txthorarioentrega" id="txthorarioentrega">
+
+                                    <label for="txtCostoTotal">Costo Total:</label>
+                                    <input disabled type="text" placeholder="S/. 15.00" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
+                                </template> -->
+
+                                <template v-else-if="selectedModo === 'PROGRAMADO_1'">
+                                    <label for="txtHorarioEntrega">Horario de Entrega:</label>
+                                    <input disabled type="text" placeholder="El pedido sera enviado al dia siguiente, entre las 09:00 a 13:00 horas" class="form-control form-control-sm" size="15" maxlength="30" v-model="horarioentrega" name="txthorarioentrega" id="txthorarioentrega">
+
+                                    <label for="txtCostoTotal">Costo Total:</label>
+                                    <input disabled type="text" placeholder="S/. 15.00" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
+                                </template>
+
+                                <template v-else-if="selectedModo === 'PROGRAMADO_2'">
+                                    <label for="txtHorarioEntrega">Horario de Entrega:</label>
+                                    <input disabled type="text" placeholder="El pedido sera enviado al dia siguiente, entre las 13:00 a 17:00 horas" class="form-control form-control-sm" size="15" maxlength="30" v-model="horarioentrega" name="txthorarioentrega" id="txthorarioentrega">
+
+                                    <label for="txtCostoTotal">Costo Total:</label>
+                                    <input disabled type="text" placeholder="S/. 15.00" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
+                                </template>
+
+                                <template v-else-if="selectedModo === 'PROGRAMADO_3'">
+                                    <label for="txtHorarioEntrega">Horario de Entrega:</label>
+                                    <input disabled type="text" placeholder="El pedido sera enviado al dia siguiente, entre las 17:00 a 21:00 horas" class="form-control form-control-sm" size="15" maxlength="30" v-model="horarioentrega" name="txthorarioentrega" id="txthorarioentrega">
+
+                                    <label for="txtCostoTotal">Costo Total:</label>
+                                    <input disabled type="text" placeholder="S/. 15.00" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
+                                </template>
+
+                                <template v-else-if="selectedModo === 'REGULAR'">
+                                    <label for="txtHorarioEntrega">Horario de Entrega:</label>
+                                    <input disabled type="text" placeholder="El pedido sera enviado a lo largo del dia siguiente." class="form-control form-control-sm" size="15" maxlength="30" v-model="horarioentrega" name="txthorarioentrega" id="txthorarioentrega">
+
+                                    <label for="txtCostoTotal">Costo Total:</label>
+                                    <input disabled type="text" placeholder="S/. 10.00" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
+                                </template>
+
                             </div>
 
                             <div class="form-group">
