@@ -24,5 +24,20 @@ namespace WebApiChzk1.Models
 
         }
 
+        //listado de monedas por pais
+        public static IEnumerable<Currencydt> ListarMonedasXpais(string pais)
+        {
+            chzkEntities db = new chzkEntities();
+            var list = from b in db.Currency.Where(t => t.country == pais)
+                       select new Currencydt()
+                       {
+                           currency1 = b.currency1,
+                           description = b.description,
+                           sign = b.sign
+                       };
+            return list;
+
+        }
+
     }
 }

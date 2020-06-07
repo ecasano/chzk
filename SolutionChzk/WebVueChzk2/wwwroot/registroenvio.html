@@ -134,7 +134,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary" @click="obtenerCodigoTienda()">Traer codigo tienda</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary" @click="obtenerCodigoTienda()">Mostrar tiendas</button>
                                 <select id="cmbTiendas" class="form-control form-control-sm" v-model="selectedTienda">
                                     <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.reference}}</option>
                                 </select>
@@ -164,16 +164,16 @@
 
                             <div class="form-group">
                                 <label for="txtNroDocumentoRecojo">Nro documento:</label>
-                                <input type="text" placeholder="Introduzca su DNI o RUC" class="form-control" pattern="[0-9]+" title="Debe ingresar solo números" size="15" maxlength="30" v-model="nrodocumentorecojo" name="txtNroDocumentoRecojo" id="txtNroDocumentoRecojo" required>
+                                <input type="number" placeholder="Introduzca su DNI o RUC" class="form-control"  title="Debe ingresar solo números" size="15" v-model="nrodocumentorecojo" name="txtNroDocumentoRecojo" id="txtNroDocumentoRecojo" required>
                                 <div class="invalid-feedback">
-                                    Debes introducir un email válido
+                                    Debes introducir un nro documento válido
                                 </div>
                             </div>
 
 
                             <div class="form-group">
                                 <label for="txtTelefonoRecojo">Teléfono:</label>
-                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="telefonorecojo" name="txtTelefonoRecojo" id="txtTelefonoRecojo">
+                                <input type="tel" class="form-control form-control-sm" size="15" maxlength="30" v-model="telefonorecojo" name="txtTelefonoRecojo" id="txtTelefonoRecojo">
                             </div>
 
 
@@ -200,13 +200,24 @@
                             <div class="form-group">
                                 <label for="cmbMoneda">Moneda:</label>
                                 <select id="cmbMoneda" class="form-control form-control-sm" v-model="selectedMoneda">
-                                    <option v-for="moneda in monedas" v-bind:value="moneda.currency1">{{moneda.currency1}}</option>
+                                    <option v-for="moneda in monedas" v-bind:value="moneda.currency1">{{moneda.description}}</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="txtCosto">Costo:</label>
-                                <input type="text" class="form-control form-control-sm" size="15" maxlength="30" v-model="costo" name="txtCosto" id="txtCosto">
+                               
+
+                                <div v-for="tamanio in tamanios">
+
+                                    <template v-if="tamanio.size === selectedTamanio">
+                                        <label for="txtCosto">Costo referencial:</label>
+                                        <span>{{selectedMonedaSimbolo}}</span>
+                                        
+                                        <span id="txtCosto" class="form-control form-control-sm" v-model="costo" >{{costo*(1+(tamanio.fee/100))}}</span>
+                                    </template>
+
+                                </div>
+
                             </div>
 
                             <button type="button" class="btn btn-primary" onclick="mostrarTab('destino')">Siguiente</button>
@@ -292,53 +303,65 @@
                                 </select>
                                 <!--<span v-if="selectedModo === 'EXPRESS'">aaa</span>-->
 
-                                <template v-if="selectedModo === 'EXPRESS'">
+                                <div v-for="mod in modosenvio">
+
+                                    <template v-if="mod.mode1 === selectedModo">
+                                        <label for="txtHorarioEntrega">Horario de Entrega:</label>
+                                        <span id="txtHorarioEntrega" class="form-control form-control-sm">{{mod.description}}</span>
+                                        <label for="txtCostoTotal">Costo Total:</label>
+                                        <span>{{selectedMonedaSimbolo}}</span>
+                                        <span id="txtCostoTotal" class="form-control form-control-sm">{{costo*(1+(mod.fee/100))}}</span>
+                                    </template>
+
+                                </div>
+                                
+                                <!--<template v-if="selectedModo === 'EXPRESS'">
                                     <label for="txtHorarioEntrega">Horario de Entrega:</label>
                                     <input disabled type="text" placeholder="El pedido será enviado el mismo día" class="form-control form-control-sm" size="15" maxlength="30" v-model="horarioentrega" name="txthorarioentrega" id="txthorarioentrega">
 
                                     <label for="txtCostoTotal">Costo Total:</label>
                                     <input disabled type="text" placeholder="S/. 30.00" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
-                                </template>
+                                </template>-->
 
                                 <!-- <template v-else-if="selectedModo === 'PROGRAMADO'">
-                                    <label for="txtHorarioEntrega">Horario de Entrega:</label>
-                                    <input disabled type="text" placeholder="El pedido sera enviado al dia siguiente el horario se debe especificar en time" class="form-control form-control-sm" size="15" maxlength="30" v-model="horarioentrega" name="txthorarioentrega" id="txthorarioentrega">
+        <label for="txtHorarioEntrega">Horario de Entrega:</label>
+        <input disabled type="text" placeholder="El pedido sera enviado al dia siguiente el horario se debe especificar en time" class="form-control form-control-sm" size="15" maxlength="30" v-model="horarioentrega" name="txthorarioentrega" id="txthorarioentrega">
 
-                                    <label for="txtCostoTotal">Costo Total:</label>
-                                    <input disabled type="text" placeholder="S/. 15.00" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
-                                </template> -->
+        <label for="txtCostoTotal">Costo Total:</label>
+        <input disabled type="text" placeholder="S/. 15.00" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
+    </template> -->
 
-                                <template v-else-if="selectedModo === 'PROGRAMADO_1'">
+                                <!--<template v-else-if="selectedModo === 'PROGRAMADO_1'">
                                     <label for="txtHorarioEntrega">Horario de Entrega:</label>
                                     <input disabled type="text" placeholder="El pedido sera enviado al dia siguiente, entre las 09:00 a 13:00 horas" class="form-control form-control-sm" size="15" maxlength="30" v-model="horarioentrega" name="txthorarioentrega" id="txthorarioentrega">
 
                                     <label for="txtCostoTotal">Costo Total:</label>
                                     <input disabled type="text" placeholder="S/. 15.00" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
-                                </template>
+                                </template>-->
 
-                                <template v-else-if="selectedModo === 'PROGRAMADO_2'">
+                                <!--<template v-else-if="selectedModo === 'PROGRAMADO_2'">
                                     <label for="txtHorarioEntrega">Horario de Entrega:</label>
                                     <input disabled type="text" placeholder="El pedido sera enviado al dia siguiente, entre las 13:00 a 17:00 horas" class="form-control form-control-sm" size="15" maxlength="30" v-model="horarioentrega" name="txthorarioentrega" id="txthorarioentrega">
 
                                     <label for="txtCostoTotal">Costo Total:</label>
                                     <input disabled type="text" placeholder="S/. 15.00" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
-                                </template>
+                                </template>-->
 
-                                <template v-else-if="selectedModo === 'PROGRAMADO_3'">
+                                <!--<template v-else-if="selectedModo === 'PROGRAMADO_3'">
                                     <label for="txtHorarioEntrega">Horario de Entrega:</label>
                                     <input disabled type="text" placeholder="El pedido sera enviado al dia siguiente, entre las 17:00 a 21:00 horas" class="form-control form-control-sm" size="15" maxlength="30" v-model="horarioentrega" name="txthorarioentrega" id="txthorarioentrega">
 
                                     <label for="txtCostoTotal">Costo Total:</label>
                                     <input disabled type="text" placeholder="S/. 15.00" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
-                                </template>
+                                </template>-->
 
-                                <template v-else-if="selectedModo === 'REGULAR'">
+                                <!--<template v-else-if="selectedModo === 'REGULAR'">
                                     <label for="txtHorarioEntrega">Horario de Entrega:</label>
                                     <input disabled type="text" placeholder="El pedido sera enviado a lo largo del dia siguiente." class="form-control form-control-sm" size="15" maxlength="30" v-model="horarioentrega" name="txthorarioentrega" id="txthorarioentrega">
 
                                     <label for="txtCostoTotal">Costo Total:</label>
                                     <input disabled type="text" placeholder="S/. 10.00" class="form-control form-control-sm" size="15" maxlength="30" v-model="costototal" name="txtCostoTotal" id="txtCostoTotal">
-                                </template>
+                                </template>-->
 
                             </div>
 
@@ -406,9 +429,11 @@
                     tipos: [],
                     selectedTipoDocumento: "DNI",
                     tamanios: [],
-                    selectedTamanio: "L",
+                    selectedTamanio: "S",
                     monedas: [],
+                    costo: "10",
                     selectedMoneda: "PEN",
+                    selectedMonedaSimbolo: "S/",
                     mediospago: [],
                     selectedMedioPago: "Efectivo",
                     comprobantes: [],
@@ -421,7 +446,7 @@
                     this.fecthModosEnvio();
                     this.fecthPaises();
                     this.obtenerTiposDocumento();
-                    this.obtenerTamaios();
+                    this.obtenerTamanios();
                     this.obtenerTipoMoneda();
                     this.obtenerMetodoPago();
                     this.obtenerComprobantePago();
@@ -450,13 +475,13 @@
                             this.tipos = response.body;
                         });
                     },
-                    obtenerTamaios: function () {
+                    obtenerTamanios: function () {
                         this.$http.get("http://localhost:49898/api/listartamaños").then(function (response) {
                             this.tamanios = response.body;
                         });
                     },
                     obtenerTipoMoneda: function () {
-                        this.$http.get("http://localhost:49898/api/listarmonedas").then(function (response) {
+                        this.$http.get("http://localhost:49898/api/listarmonedasXpais?pais=" + this.selectedPais).then(function (response) {
                             this.monedas = response.body;
                         });
                     },

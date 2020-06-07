@@ -15,8 +15,8 @@ namespace WebApiChzk1.Models
                        select new Modedt()
                        {
                            mode1 = b.mode1,
-                           description = b.description
-
+                           description = b.description,
+                           fee = b.fee
 
                        };
             return list;

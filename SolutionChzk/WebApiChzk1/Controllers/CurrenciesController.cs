@@ -27,7 +27,13 @@ namespace WebApiChzk1.Controllers
             return Currency.ListarMonedas();
         }
 
-
+        // GET: api/ListarMonedasXpais //
+        [HttpGet]
+        [Route("api/listarmonedasXpais")]
+        public IEnumerable<Currencydt> GetListarMonedasXpais(string pais)
+        {
+            return Currency.ListarMonedasXpais(pais);
+        }
 
         // GET: api/Currencies
         public IQueryable<Currency> GetCurrency()

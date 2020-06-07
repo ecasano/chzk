@@ -22,6 +22,8 @@ namespace WebApiChzk1.Models
     
         public string currency1 { get; set; }
         public string description { get; set; }
+        public string country { get; set; }
+        public string sign { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ListItemSold> ListItemSold { get; set; }

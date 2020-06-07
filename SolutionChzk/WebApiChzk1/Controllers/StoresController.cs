@@ -41,6 +41,7 @@ namespace WebApiChzk1.Controllers
         [Route("api/listartiendas")]
         public IEnumerable<Storedt> GetListarTiendas(string distrito, string direccion, string referencia, string pais)
         {
+            Store.ValidarTienda(distrito, direccion, referencia, pais);
             return Store.ListarTiendas(distrito, direccion, referencia, pais);
         }
 

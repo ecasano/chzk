@@ -16,8 +16,8 @@ namespace WebApiChzk1.Models
                        select new DeliverySizedt()
                        {
                            size = b.size,
-                           description = b.description
-
+                           description = b.description,
+                           fee = b.fee
                        };
             return list;
 

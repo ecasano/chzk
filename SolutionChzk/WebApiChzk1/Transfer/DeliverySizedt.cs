@@ -10,5 +10,7 @@ namespace WebApiChzk1.Transfer
 
         public string size { get; set; }
         public string description { get; set; }
+
+        public Nullable<int> fee { get; set; }
     }
 }
