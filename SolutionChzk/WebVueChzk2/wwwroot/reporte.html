@@ -75,8 +75,8 @@
 
 
             <div class="form-group">
-                <label for="txtdistrito">Codigo de Delivery:</label>
-                <input type="text" class="form-control form-control-sm" placeholder="Introduzca el distrito" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito" required>
+                <label for="deliverycode">Codigo de Delivery:</label>
+                <input type="text" class="form-control form-control-sm" placeholder="Introduzca el DeliveryTrackcode" size="15" maxlength="30" v-model="distrito" name="txtdistrito" id="txtdistrito" required>
             </div>
 
             <div class="form-group">
@@ -92,7 +92,7 @@
                 <button type="button" class="btn btn-sm btn-outline-secondary" @click="ValidarTienda()">Reporte por tienda</button>
 
                 <select id="cmbTiendas" class="form-control form-control-sm" v-model="selectedTienda">
-                    <option v-for="tienda in tiendas" v-bind:value="tienda.storeId">{{tienda.reference}}</option>
+                    <option v-for="tienda in tiendas" v-bind:value="entregas.deliveryTrackCode">{{tienda.reference}}</option>
                 </select>
             </div>
 
