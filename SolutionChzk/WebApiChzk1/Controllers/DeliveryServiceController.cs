@@ -33,7 +33,7 @@ namespace WebApiChzk1.Controllers
         // GET: api/EntregasPorTienda
         [HttpGet]
         [Route("api/entregasportienda")]
-        public IEnumerable<Storedt> GetEntregasPorTienda(string tienda, string)
+        public IEnumerable<DeliveryServicedt> GetEntregasPorTienda(int tienda)
         {
             return DeliveryService.EntregasPorTienda(tienda);
         }

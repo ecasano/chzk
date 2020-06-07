@@ -25,13 +25,13 @@ namespace WebApiChzk1.Models
         }
 
 
-        public static IEnumerable<DeliveryServicedt> EntregasPorTienda(string tienda)
+        public static IEnumerable<DeliveryServicedt> EntregasPorTienda(int tienda)
         {
             chzkEntities db = new chzkEntities();
             var list = from b in db.DeliveryService.Where(t => t.storeId == tienda)
                        select new DeliveryServicedt()
                        {
-                           deliveryTrackCode = b.DeliveryTrackCode,
+                           deliveryTrackCode = b.deliveryTrackCode,
                            storeId = b.storeId
 
                        };
