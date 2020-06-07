@@ -253,7 +253,7 @@
                             <div class="form-group">
                                 <label for="txtTelefonoEntrega">Teléfono:</label>
                                 <input type="text" pattern="[0-9]" class="form-control form-control-sm" size="15" maxlength="10" v-model="telefonoentrega" name="txtTelefonoEntrega" id="txtTelefonoEntrega">
-                                
+                                <!--<input type="number" name="txtTelefonoEntrega" id="txtTelefonoEntrega" v-model="telefonoentrega" min="0" size="15" maxlength="15">-->
                             </div>
 
 
@@ -267,7 +267,7 @@
                             <div class="form-group">
                                 <label for="cmbModos">Modo de envío:</label>
                                 <select id="cmbModos" class="form-control form-control-sm" v-model="selectedModo">
-                                    <option hidden selected>Selecciona una opción</option>
+                                    <!--<option disabled selected>Selecciona una opción</option>-->
                                     <option v-for="mod in modosenvio" v-bind:value="mod.mode1">{{mod.mode1}}</option>
                                 </select>
                                 <!--<span v-if="selectedModo === 'EXPRESS'">aaa</span>-->
