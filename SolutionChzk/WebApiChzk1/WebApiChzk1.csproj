@@ -304,6 +304,7 @@
     <Content Include="Models\ModelChzk.edmx.diagram">
       <DependentUpon>ModelChzk.edmx</DependentUpon>
     </Content>
+    <Content Include="libman.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
